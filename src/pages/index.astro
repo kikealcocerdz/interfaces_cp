@@ -1,0 +1,37 @@
+---
+import Accessories from "../components/Accessories.astro";
+import HeroSection from "../components/HeroSection.astro";
+import LandingHeader from "../components/LandingHeader.astro";
+import ModelS from "../components/ModelS.astro";
+import ModelThree from "../components/ModelThree.astro";
+import ModelX from "../components/ModelX.astro";
+import ModelY from "../components/Descripcion.astro";
+import PowerWall from "../components/PowerWall.astro";
+import Layout from "../layouts/Layout.astro";
+import Descripcion from "../components/Descripcion.astro";
+import CarouselLanding from "../components/CarouselLanding.js";
+---
+
+<Layout title="San Andreas Motorsports">
+  <LandingHeader />
+
+  <main
+    class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
+  >
+    <div class="snap-center">
+      <HeroSection />
+    </div>
+    <div class="snap-center">
+      <Descripcion />
+    </div>
+    <div class="snap-center">
+      <CarouselLanding />
+    </div>
+    <div class="snap-center">
+      <ModelS />
+    </div>
+    <div class="snap-center">
+      <ModelX />
+    </div>
+  </main>
+</Layout>
