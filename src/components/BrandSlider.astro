@@ -1,3 +1,14 @@
+---
+export interface Props {
+
+  imageCar: Array<string>;
+  brand: string;
+
+}
+
+const { imageCar, brand } = Astro.props as Props;
+---
+
 <style>
   .swiper {
     margin: 10px auto;
@@ -30,16 +41,11 @@
 
 
 <div class="swiper mySwiper">
-<div class="swiper-wrapper">
-  <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"></div>
-  <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"></div>
-  <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"></div>
-  <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"></div>
-</div>
-<div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div>
-<div class="swiper-pagination"></div>
-
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img alt=`${brand} 0` src=`${imageCar[0]}`></div>
+    <div class="swiper-slide"><img alt=`${brand} 1` src=`${imageCar[1]}`></div>
+    <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[2]}`></div>
+  </div>
 </div>
 
 <script>
@@ -48,22 +54,9 @@ import Swiper from 'swiper';
 // import Swiper styles
 import 'swiper/css';
 
-const swiper = new Swiper('.mySwiper', {
-slidesPerView: 1,
-spaceBetween: 30,
-loop: true,
-pagination: {
-  el: '.swiper-pagination',
-  clickable: true,
-},
-autoplay: {
-  delay: 2500,
-  disableOnInteraction: false,
-},
-navigation: {
-  nextEl: '.swiper-button-next',
-  prevEl: '.swiper-button-prev',
-},
-});
+const swiper = new Swiper(".mySwiper", {
+      effect: "cards",
+      grabCursor: true,
+    });
 
 </script>
