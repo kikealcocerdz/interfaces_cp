@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
 import Descripcion from "../components/Descripcion.astro";
 import Carousel from "../components/Carousel.astro";
 import BrandCollection from "../components/BrandCollection.astro";
+import SectionProduct from "../components/SectionProduct.astro";
 ---
 
 <Layout title="San Andreas Motorsports">
@@ -14,8 +15,11 @@ import BrandCollection from "../components/BrandCollection.astro";
   <main
     class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
   >
-    <div class="snap-end">
-      <BrandCollection/>
+    <div class="snap-center">
+      <SectionProduct/>
+    </div>
+    <div class="snap-center">
+      <SectionProduct/>
     </div>
   </main>
 </Layout>
