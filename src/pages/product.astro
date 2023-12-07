@@ -1,12 +1,10 @@
 ---
-import HeroSection from "../components/HeroSection.astro";
 import LandingHeader from "../components/LandingHeader.astro";
-import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
-import Descripcion from "../components/Descripcion.astro";
-import Carousel from "../components/Carousel.astro";
-import BrandCollection from "../components/BrandCollection.astro";
-import SectionProduct from "../components/SectionProduct.astro";
+import SectionColor from "../components/SectionColor.astro";
+import SectionRuedas from "../components/SectionRuedas.astro"
+import SectionInterior from "../components/SectionInterior.astro"
+import SectionConfirm from "../components/SectionConfirm.astro"
 ---
 
 <Layout title="San Andreas Motorsports">
@@ -16,10 +14,16 @@ import SectionProduct from "../components/SectionProduct.astro";
     class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
   >
     <div class="snap-center">
-      <SectionProduct/>
+      <SectionColor/>
     </div>
     <div class="snap-center">
-      <SectionProduct/>
+      <SectionRuedas />
+    </div>
+    <div class="snap-center">
+      <SectionInterior />
+    </div>
+    <div class="snap-center">
+      <SectionConfirm />
     </div>
   </main>
 </Layout>

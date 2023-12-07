@@ -1,0 +1,27 @@
+---
+const { color, title, subtitle, id } = Astro.props;
+const textColor = `text-${color}`;
+---
+
+<section
+  class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
+  data-header-color={color}
+  id={id}
+>
+<div class="flex flex-row items-center justify-evenly w-screen h-screen">
+  <div class="w-[70%] h-full mt-16 flex flex-col items-center justify-center">
+    <h2 class="text-6xl text-black font-extrabold text-center">Configuración Finalizada</h2>
+    <p class="text-2xl text-black mt-20 text-center">Para realizar el encargo, pinche en el siguiente enlace para concertar una cita con el concesionario y realizar el pago.</p>
+    <p class="text-2xl text-black mt-10 text-center">Al finalizar este proceso, recibirá su coche.</p>
+    <button class="bg-black text-white rounded-full p-2 w-1/3 mt-20 text-2xl font-bold">Concertar cita</button>
+  </div>
+  <div >
+    <nav class="flex flex-col w-full">
+      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Color</div>
+      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Ruedas</div>
+      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Interior</div>
+      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Encargo</div>
+    </nav>
+  </div>
+</div>
+</section>
