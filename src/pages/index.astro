@@ -1,6 +1,5 @@
 ---
 import HeroSection from "../components/HeroSection.astro";
-import LandingHeader from "../components/LandingHeader.astro";
 import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Descripcion from "../components/Descripcion.astro";
@@ -9,8 +8,6 @@ import BrandCollection from "../components/BrandCollection.astro";
 ---
 
 <Layout title="San Andreas Motorsports">
-  <LandingHeader />
-
   <main
     class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
   >
@@ -21,10 +18,10 @@ import BrandCollection from "../components/BrandCollection.astro";
       <Descripcion />
     </div>
     <div class="snap-center">
-      <Carousel/>
+      <Carousel />
     </div>
     <div class="snap-end">
-      <BrandCollection/>
+      <BrandCollection />
     </div>
   </main>
 </Layout>
