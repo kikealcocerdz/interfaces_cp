@@ -7,6 +7,7 @@ export interface Props {
 
 }
 
+// const swiperId = (new Date().valueOf()).toString();
 const { imageCar, brand } = Astro.props as Props;
 ---
 
@@ -41,7 +42,7 @@ const { imageCar, brand } = Astro.props as Props;
 </style>
 
 
-<div class="swiper mySwiper">
+<div class="swiper" id="swiper-BrandSlider">
   <div class="swiper-wrapper">
     <div class="swiper-slide"><img alt=`${brand} 0` src=`${imageCar[0]}`></div>
     <div class="swiper-slide"><img alt=`${brand} 1` src=`${imageCar[1]}`></div>
@@ -50,14 +51,11 @@ const { imageCar, brand } = Astro.props as Props;
 </div>
 
 <script>
-// import Swiper JS
-import Swiper from 'swiper';
-// import Swiper styles
-import 'swiper/css';
+  import Swiper from 'swiper';
+  import 'swiper/css';
 
-const swiper = new Swiper(".mySwiper", {
+  new Swiper('#swiper-BrandSlider', {
       effect: "cards",
       grabCursor: true,
     });
-
 </script>

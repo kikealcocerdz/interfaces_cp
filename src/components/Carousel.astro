@@ -1,67 +1,70 @@
+---
+// const swiperId = "Carousel-" + (new Date().valueOf()).toString();
+---
+
 <style>
     .swiper {
-      width: 100%;
-      height: 100vh;
+        width: 100%;
+        height: 100vh;
     }
 
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
     .swiper {
-      margin-left: auto;
-      margin-right: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 </style>
 
 
-<div class="swiper mySwiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"></div>
-    <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"></div>
-    <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"></div>
-    <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"></div>
-  </div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-pagination"></div>
-
+<div class="swiper" id="swiper-Carousel">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"></div>
+        <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"></div>
+        <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"></div>
+        <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
 </div>
 
 <script>
-// import Swiper JS
-import Swiper from 'swiper';
-// import Swiper styles
-import 'swiper/css';
+    import Swiper from 'swiper';
+    import {Navigation, Pagination, Autoplay} from 'swiper/modules';
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
 
-const swiper = new Swiper('.mySwiper', {
-  slidesPerView: 1,
-  spaceBetween: 30,
-  loop: true,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
-
+    new Swiper(`#swiper-Carousel`, {
+        modules: [Navigation, Pagination, Autoplay],
+        slidesPerView: 1,
+        loop: true,
+        pagination: {
+            el: `#swiper-Carousel > .swiper-pagination`,
+            clickable: true,
+        },
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: `#swiper-Carousel > .swiper-button-next`,
+            prevEl: `#swiper-Carousel > .swiper-button-prev`,
+        },
+    });
 </script>
