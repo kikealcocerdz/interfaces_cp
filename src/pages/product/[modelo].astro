@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionColor from "../../components/SectionColor.astro";
+import SectionInterior from "../../components/SectionInterior.astro"
+import SectionConfirm from "../../components/SectionConfirm.astro"
+
+export function getStaticPaths() {
+  return [
+    {params: {modelo: 'tesla'}},
+    {params: {modelo: 'huracan'}},
+    {params: {modelo: 'mclaren'}},
+    {params: {modelo: 'camaro'}},
+
+  ];
+}
+const { modelo } = Astro.params;
+---
+
+<Layout title="San Andreas Motorsports">
+  <main
+    class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
+  >
+    <div>
+      <SectionColor model={modelo} />
+    </div>
+    <div class="snap-center">
+      <SectionInterior model={modelo}/>
+    </div>
+    <div class="snap-center">
+      <SectionConfirm model={modelo} />
+    </div>
+  </main>
+</Layout>

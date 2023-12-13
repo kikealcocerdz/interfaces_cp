@@ -1,12 +1,11 @@
 ---
 const { color, title, subtitle, id } = Astro.props;
 const textColor = `text-${color}`;
+import NavigateProduct from "../components/NavigateProduct.astro";
 ---
-
 <section
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
-  data-header-color={color}
-  id={id}
+  id = "section-interior"
 >
 <div class="flex flex-row items-center justify-evenly w-screen h-screen">
   <div class="w-[70%] h-3/4 items-center justify-center">
@@ -16,14 +15,7 @@ const textColor = `text-${color}`;
       <img id="image-interior" src="/tesla_interior_negro.png" class="w-3/5" alt="Tesla S" />
     </div>
     </div>
-  <div >
-    <nav class="flex flex-col w-full">
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Color</div>
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Ruedas</div>
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Interior</div>
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-white border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Encargo</div>
-    </nav>
-  </div>
+  <NavigateProduct step={[1, 2, 3]}/>
 </div>
 <footer class="mb-10">
   <div class="flex flex-row justify-center items-center">
