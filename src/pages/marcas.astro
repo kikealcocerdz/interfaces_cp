@@ -1,0 +1,78 @@
+---
+import LandingHeader from "../components/LandingHeader.astro";
+const { brand } = Astro.props;
+---
+
+<style>
+  .swiper {
+      width: 100%;
+      height: 100vh;
+  }
+
+  .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .swiper {
+      margin-left: auto;
+      margin-right: auto;
+  }
+</style>
+<LandingHeader />
+<section class="bg-blue-950 w-screen h-screen snap-center">
+  <div class="flex h-full w-full flex-row justify-evenly items-center">
+    <img src="/logo.png" class="w-1/4" />
+    <h2 class="text-white text-6xl">&</h2>
+    <img src="/chevrolet-logo.png" class="w-1/4" />
+  </div>
+
+<div class="swiper" id="swiper-Carousel">
+  <div class="swiper-wrapper">
+      <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"></div>
+      <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"></div>
+      <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"></div>
+      <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"></div>
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import {Navigation, Pagination, Autoplay} from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  new Swiper(`#swiper-Carousel`, {
+      modules: [Navigation, Pagination, Autoplay],
+      slidesPerView: 1,
+      loop: true,
+      pagination: {
+          el: `#swiper-Carousel > .swiper-pagination`,
+          clickable: true,
+      },
+      autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+      },
+      navigation: {
+          nextEl: `#swiper-Carousel > .swiper-button-next`,
+          prevEl: `#swiper-Carousel > .swiper-button-prev`,
+      },
+  });
+</script>

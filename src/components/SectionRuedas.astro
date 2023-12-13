@@ -1,34 +1,9 @@
 ---
 const { color, title, subtitle, id } = Astro.props;
 const textColor = `text-${color}`;
----
+let imageSrc = `/tesla_${color}.jpeg`;
 
-<section
-  class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
-  data-header-color={color}
-  id={id}
->
-<div class="flex flex-row items-center justify-evenly w-screen h-screen">
-  <div class="w-[70%] h-3/4 items-center justify-center">
-    <h2 class="text-4xl font-bold text-center">Tesla Model S</h2>
-    <ul class="flex flex-row items-center justify-evenly mt-2"><li>Autonomía: <strong>634km</strong></li><li>Velocidad Máxima: <strong>250km/h</strong></li><li>0-100km/h en <strong>3.2 segundos</strong></li></ul>
-    <img src="/tesla-s-white.jpeg" alt="Tesla S" class="w-full h-full object-contain mt-10" />
-  </div>
-  <div >
-    <nav class="flex flex-col w-full">
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Color</div>
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-black border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Ruedas</div>
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-white border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Interior</div>
-      <div class="flex flex-row items-center justify-center mt-5 w-max"><a class="bg-white border-2 border-black rounded-full w-16 h-16 mr-5 "></a>Encargo</div>
-    </nav>
-  </div>
-</div>
-<footer class="mb-10">
-  <div class="flex flex-row justify-center items-center">
-    <div class="flex flex-row justify-center items-center">
-      <button class="mx-3 w-16 h-16 flex justify-center items-center"><img src="/tesla-llantas-1.avif"></button>
-      <button class="mx-3 w-16 h-16 flex justify-center items-center"><img src="/tesla-llantas-2.avif"></button>
-    </div>
-  </div>
-</footer>
-</section>
+function changeColor(color) {
+  imageSrc = `/tesla_${color}.jpeg`;
+}
+---
