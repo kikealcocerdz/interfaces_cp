@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LandingHeader from "../components/LandingHeader.astro";
+import LugarSection from "../components/LugarSection.astro";
+import DatosSection from "../components/DatosSection.astro";
+import ConfirmSection from "../components/ConfirmSection.astro";
+---
+
+<Layout title="San Andreas Motorsports">
+  <main
+    class="snap-x snap-mandatory relative w-full h-screen overflow-x-auto overflow-y-hidden scroll-smooth flex"
+  >
+    <LandingHeader />
+      <div class="snap-start flex-shrink-0 w-screen h-screen">
+        <LugarSection />
+      </div>
+      <div class="snap-start flex-shrink-0 w-screen h-screen">
+        <DatosSection />
+      </div>
+      <div class="snap-start flex-shrink-0 w-screen h-screen">
+        <ConfirmSection />
+      </div>
+  </main>
+</Layout>
