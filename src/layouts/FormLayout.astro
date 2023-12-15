@@ -10,7 +10,8 @@ export interface Form {
 }
 export interface Props {
     title: String,
-    form?: Form
+    form?: Form,
+    displayForm: boolean,
 }
 
 import Layout from "./Layout.astro"
@@ -36,13 +37,20 @@ const {
         ],
         button: false,
         submitText: "Sign In",
-    }
+    },
+    displayForm = true
 } = Astro.props
 ---
 
 <style>
     h1 {
         font-size: 60px;
+    }
+    button {
+        @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 flex-1 rounded;
+    }
+    #slotWrapper :global(button) {
+        @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 flex-1 rounded;
     }
 </style>
 
@@ -52,8 +60,8 @@ const {
         <h1 class="h-10 flex-1">{title}</h1>
         <div class="flex-grow flex flex-col w-full relative place-items-center h-3/4">
             <div class="w-full max-w-xs">
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    {form.entries.map((element) => (
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
+                    {displayForm && form.entries.map((element) => (
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for={element.name}>
                                     {element.label}
@@ -62,24 +70,26 @@ const {
                                        id={element.name} name={element.name} {...element.opts}>
                             </div>
                     ))}
-                    {form.button &&
-                        <div class="mb-6 flex items-center">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded focus:outline-none focus:shadow-outline"
-                                    type="button">
-                                {form.submitText}
-                            </button>
-                        </div>
+                    {displayForm && form.button &&
+                            <div class="mb-6 flex items-center">
+                                <button>
+                                    {form.submitText}
+                                </button>
+                            </div>
                     }
-                    <slot>
-                        <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
-                                Sign In
-                            </button>
-                            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-                                Forgot Password?
-                            </a>
-                        </div>
-                    </slot>
+                    <div id="slotWrapper">
+                        <slot>
+                            <div class="flex items-center justify-between gap-1">
+                                <button type="button">
+                                    Sign In
+                                </button>
+                                <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                                   href="#">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </slot>
+                    </div>
                 </form>
             </div>
         </div>

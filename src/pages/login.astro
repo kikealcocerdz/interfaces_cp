@@ -1,0 +1,63 @@
+---
+import {getSession} from "auth-astro/server"
+
+import FormLayout from "../layouts/FormLayout.astro";
+
+let session = await getSession(Astro.request);
+
+console.log(session);
+---
+
+<FormLayout title="Login" form={{
+    entries: [
+        {
+            name: "username",
+            label: "Nombre de usuario:",
+            opts: {
+                type: "text",
+                required: true,
+                minlength: "8"
+            }
+        },
+        {
+            name: "password",
+            label: "Contraseña:",
+            opts: {
+                type: "password",
+                required: true,
+                minlength: "8"
+            }
+        }
+    ],
+    submitText: "Login",
+    button: false
+}} displayForm={!session}>
+    <div class="flex items-center justify-between mb-4 gap-1">
+        <button onclick='(function(){ window.location.replace("/registrar")})();'>Registrar</button>
+    </div>
+    <div class="flex items-center justify-between mb-4 gap-1">
+        <button onclick='(function(){ window.location.replace("/")})();'>Volver</button>
+    </div>
+    <div class="flex items-center justify-between mb-6 gap-1">
+        <button id="login" type="button" class={session ? "hidden" : "block"}>Iniciar sesión</button>
+        <button id="logout" type="button" class={!session ? "hidden" : "block"}>Desconectar</button>
+    </div>
+    {!session && <p id="result" class="text-error-red hidden" >Había un problema</p>}
+    {session && <p class="text-success-green">Iniciado sesión como {session.user.name}</p>}
+</FormLayout>
+
+<script>
+    import {signIn, signOut} from "auth-astro/client"
+
+
+    console.log("Hello!");
+
+    document.querySelector("#login").onclick = () => signIn("credentials",
+        {"username": document.querySelector("form").elements["username"].value,
+            "password": document.querySelector("form").elements["password"].value,
+            redirect: false}).then(() => {
+                document.querySelector("#result").style.display = "block";
+            });
+
+    document.querySelector("#logout").onclick = () => signOut()
+</script>
