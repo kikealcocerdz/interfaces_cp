@@ -5,7 +5,16 @@ module.exports = {
 		fontFamily: {
 			sans: ['Gotham SSm A, sans-serif']
 		},
-		extend: {},
+		extend: {
+			colors: {
+				'white': '#ffffff',
+				'light-grey': '#E2E1E5',
+				'grey': '#A5A5A5',
+				'black': '#000000',
+				'error-red': '#ef4444',
+				'success-green': '#22c55e',
+			}
+		},
 	},
 	plugins: [
 		require('postcss-nested'),

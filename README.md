@@ -6,6 +6,8 @@ Esto es un proyecto de estudiantes para Interfaces de Usuarios en UC3M
 ### Windows
 Instalar Node.js desde [aquí](https://nodejs.org/en/download)
 
+Es posible que necesitas cambiar el valor de `USER_DATA` en `.env` a la ruta de `users`
+
 ### Debian y Ubuntu
 ```
 sudo apt install nodejs
