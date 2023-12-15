@@ -1,0 +1,87 @@
+---
+export interface FormEntry {
+    name: String,
+    label: String,
+    opts?: {}
+}
+export interface Form {
+    entries: [FormEntry],
+    submitText: String
+}
+export interface Props {
+    title: String,
+    form?: Form
+}
+
+import Layout from "./Layout.astro"
+
+const {
+    title, form = {
+        entries: [
+            {
+                name: "username",
+                label: "Username",
+                opts: {
+                    placeholder: "Username"
+                }
+            },
+            {
+                name: "password",
+                label: "Password",
+                opts: {
+                    type: "password",
+                    placeholder: "******************"
+                }
+            },
+        ],
+        button: false,
+        submitText: "Sign In",
+    }
+} = Astro.props
+---
+
+<style>
+    h1 {
+        font-size: 60px;
+    }
+</style>
+
+
+<Layout title={title} landingHeader={false}>
+    <div class="flex flex-row flex-wrap w-full bg-gradient-to-t from-grey to-white relative h-screen">
+        <h1 class="h-10 flex-1">{title}</h1>
+        <div class="flex-grow flex flex-col w-full relative place-items-center h-3/4">
+            <div class="w-full max-w-xs">
+                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    {form.entries.map((element) => (
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2" for={element.name}>
+                                    {element.label}
+                                </label>
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                       id={element.name} name={element.name} {...element.opts}>
+                            </div>
+                    ))}
+                    {form.button &&
+                        <div class="mb-6 flex items-center">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 w-full rounded focus:outline-none focus:shadow-outline"
+                                    type="button">
+                                {form.submitText}
+                            </button>
+                        </div>
+                    }
+                    <slot>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+                                Sign In
+                            </button>
+                            <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </slot>
+                </form>
+            </div>
+        </div>
+    </div>
+</Layout>

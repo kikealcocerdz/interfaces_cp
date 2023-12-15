@@ -1,0 +1,112 @@
+---
+import FormLayout from "../layouts/FormLayout.astro";
+import validator from "email-validator";
+import fsp from 'node:fs/promises';
+import fs from 'node:fs'
+
+const emailRegex = /^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;
+
+let message = "";
+let success = false;
+let emailUsagePath = `${import.meta.env.USER_DATA}usedemails.json`;
+let emailUsage = JSON.parse(await fsp.readFile(emailUsagePath));
+
+if (Astro.request.method === "POST") {
+    try {
+        success = false;
+        const data = await Astro.request.formData();
+        const name = data.get("name").toString();
+        const username = data.get("username").toString()
+        const email = data.get("email").toString();
+        const password = data.get("password").toString();
+        const phone = data.get("phone").toString().replace(" ", "");
+        const filePath = `${import.meta.env.USER_DATA}.${username}.json`;
+
+        if (!name || !email || !password || !username) {
+            message = "Falta campos requeridos";
+        } else if (password.length < 8) {
+            message = "La contraseña es demasiado corta";
+        } else if (!validator.validate(email)) {
+            message = "El correo electrónico es invalido";
+        } else if (emailUsage.emails.includes(email)) {
+            message = "El correo electrónico ya está usado";
+        } else if (username.length < 8) {
+            message = "El nombre de usuario es demasiado corto";
+        } else if (!/^[a-z0-9_]+$/.test(username)) {
+            message = "El nombre de usuario solo puede tener caracteres alfanuméricos y guiones bajos";
+        } else if (fs.existsSync(filePath)) {
+            message = "Este nombre de usuario está usado";
+        } else if (!/^(\d\s*){9}$/.test(phone)) {
+            message = "Teléfono invalido (necesita ser de España)";
+        } else {
+            await fsp.writeFile(filePath, JSON.stringify({
+                name: name,
+                username: username,
+                email: email,
+                password: password,
+                phone: phone,
+            }));
+            emailUsage.emails.push(email);
+            await fsp.writeFile(emailUsagePath, JSON.stringify(emailUsage));
+            message = "Éxito";
+            success = true;
+        }
+    } catch (error) {
+        message = "Algo ha sido mal";
+        if (error instanceof Error) {
+            console.error(error.stack);
+        }
+    }
+}
+---
+
+<FormLayout title="Registrar" form={{
+    entries: [
+        {
+            name: "username",
+            label: "Nombre de usuario:",
+            opts: {
+                type: "text",
+                required: true,
+                minlength: "8"
+            }
+        },
+        {
+            name: "name",
+            label: "Nombre:",
+            opts: {
+                type: "text",
+                required: true,
+            }
+        },
+        {
+            name: "email",
+            label: "Correo electrónico:",
+            opts: {
+                type: "email",
+                required: true,
+            }
+        },
+        {
+            name: "phone",
+            label: "Teléfono:",
+            opts: {
+                type: "text",
+                required: true,
+            }
+        },
+        {
+            name: "password",
+            label: "Contraseña:",
+            opts: {
+                type: "password",
+                required: true,
+                minlength: "8"
+            }
+        }
+    ],
+    submitText: "Registrar",
+    button: true
+}}>
+    <em class={success ? "text-success-green" : "text-error-red"}>{message}</em>
+</FormLayout>
