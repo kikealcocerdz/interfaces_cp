@@ -1,7 +1,7 @@
 ---
-const { color, title, subtitle, id } = Astro.props;
-const textColor = `text-${color}`;
 import NavigateProduct from "../components/NavigateProduct.astro";
+
+const { model } = Astro.props;
 ---
 <section
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
@@ -12,24 +12,24 @@ import NavigateProduct from "../components/NavigateProduct.astro";
     <h2 class="text-4xl font-bold text-center">Tesla Model S</h2>
     <ul class="flex flex-row items-center justify-evenly mt-2"><li>Autonomía: <strong>634km</strong></li><li>Velocidad Máxima: <strong>250km/h</strong></li><li>0-100km/h en <strong>3.2 segundos</strong></li></ul>
     <div class="w-full h-full justify-center items-center flex">
-      <img id="image-interior" src="/tesla_interior_negro.png" class="w-3/5" alt="Tesla S" />
-    </div>
+        <img id="image-interior" src={`/${model}_interior_negro.png`} class="w-3/5" alt="Interior" />
+      </div>
     </div>
   <NavigateProduct step={[1, 2, 3]}/>
 </div>
 <footer class="mb-10">
   <div class="flex flex-row justify-center items-center">
     <div class="flex flex-row justify-center items-center">
-      <button onclick="window.changeInterior('negro');" class="bg-black border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
-      <button onclick="window.changeInterior('blanco');" class="bg-white border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
+      <button onclick={`changeInterior('negro', '${model}')`}class="bg-black border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
+      <button onclick={`changeInterior('blanco', '${model}')`} class="bg-white border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
     </div>
   </div>
 </footer>
 </section>
 
 <script>  
-  window.changeInterior = function(interior: string) {
-    const imageInterior = document.getElementById("image-interior") as HTMLImageElement;
-    imageInterior.src = `/tesla_interior_${interior}.png`;
+  window.changeInterior = function(interior, model ) {
+    const imageInterior = document.getElementById("image-interior")
+    imageInterior.src = `/${model}_interior_${interior}.png`;
   }
 </script>

@@ -1,0 +1,150 @@
+
+<style>
+  .calendar-container {
+      text-align: center;
+  }
+  
+  .calendar {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      overflow: hidden;
+      width: 220px;
+      margin-top: 10px;
+  }
+  
+  .month {
+      background-color: #ddd;
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+  }
+  
+  .month span {
+      cursor: pointer;
+  }
+  
+  .weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background-color: #f0f0f0;
+      font-weight: bold;
+  }
+  
+  .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+  }
+  
+  .days span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  .days span:hover {
+      background-color: #000000;
+  }
+  
+  #selected-date {
+      margin-top: 10px;
+      padding: 5px;
+      width: 350px;
+      font-size: 13px;
+  }
+  
+  </style>
+
+<div class="calendar-container">
+  <input type="text" id="selected-date" readonly>
+  <div class="calendar">
+      <div class="month">
+          <span class="prev">&#9665;</span>
+          <span class="current-month">Enero 2023</span>
+          <span class="next">&#9655;</span>
+      </div>
+      <div class="weekdays">
+          <span>L</span>
+          <span>M</span>
+          <span>X</span>
+          <span>J</span>
+          <span>V</span>
+          <span>S</span>
+          <span>D</span>
+      </div>
+      <div class="days"></div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const currentDate = new Date();
+      let selectedDate = currentDate;
+  
+      function generateCalendar(month, year) {
+          const firstDay = new Date(year, month, 1);
+          const lastDay = new Date(year, month + 1, 0);
+          const daysContainer = document.querySelector(".days");
+  
+          // Clear previous days
+          daysContainer.innerHTML = "";
+  
+          // Generate weekdays
+          for (let i = 0; i < firstDay.getDay(); i++) {
+              const emptyDay = document.createElement("span");
+              emptyDay.classList.add("empty");
+              daysContainer.appendChild(emptyDay);
+          }
+  
+          // Generate days
+          for (let i = 1; i <= lastDay.getDate(); i++) {
+              const day = document.createElement("span");
+              day.textContent = i;
+              day.addEventListener("click", () => selectDate(new Date(year, month, i)));
+              daysContainer.appendChild(day);
+          }
+      }
+  
+      function updateCalendarHeader() {
+      const currentMonthElement = document.querySelector(".current-month");
+      currentMonthElement.textContent = getMonthName(selectedDate.getMonth()) + " " + selectedDate.getFullYear();
+      }
+  
+      function changeMonth(offset) {
+          selectedDate.setMonth(selectedDate.getMonth() + offset);
+          generateCalendar(selectedDate.getMonth(), selectedDate.getFullYear());
+          updateCalendarHeader();
+      }
+  
+      document.querySelector(".prev").addEventListener("click", () => changeMonth(-1));
+      document.querySelector(".next").addEventListener("click", () => changeMonth(1));
+  
+  
+      function getMonthName(month) {
+          const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+          return monthNames[month];
+      }
+  
+      function selectDate(date) {
+          selectedDate = date;
+          updateCalendarHeader();
+          document.getElementById("selected-date").value = formatDate(selectedDate);
+      }
+  
+      function formatDate(date) {
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          return date.toLocaleDateString('es-ES', options);
+      }
+  
+      function init() {
+          updateCalendarHeader();
+          generateCalendar(currentDate.getMonth(), currentDate.getFullYear());
+      }
+  
+      init();
+  });
+  
+  </script>

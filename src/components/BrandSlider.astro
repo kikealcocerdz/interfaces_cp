@@ -14,7 +14,7 @@ const { imageCar, brand } = Astro.props as Props;
 <style>
   .swiper {
     margin: 10px auto;
-    width: 40%;
+    width: 50%;
     height: 35vh;
     margin-top: 90px;
   }
@@ -47,6 +47,9 @@ const { imageCar, brand } = Astro.props as Props;
     <div class="swiper-slide"><img alt=`${brand} 0` src=`${imageCar[0]}`></div>
     <div class="swiper-slide"><img alt=`${brand} 1` src=`${imageCar[1]}`></div>
     <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[2]}`></div>
+    <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[3]}`></div>
+    <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[4]}`></div>
+
   </div>
 </div>
 
@@ -57,5 +60,6 @@ const { imageCar, brand } = Astro.props as Props;
   new Swiper('#swiper-BrandSlider', {
       effect: "cards",
       grabCursor: true,
+      loop: true,
     });
 </script>
