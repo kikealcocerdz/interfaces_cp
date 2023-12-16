@@ -24,4 +24,25 @@ export default defineConfig({
             },
         })
     ],
+    callbacks: {
+        async session({ session, token, user }) {
+            // Persist user info in session
+            session.user.name = token.name;
+            session.user.username = token.username;
+            session.user.email = token.email;
+            session.user.phone = token.phone;
+
+            return session;
+        },
+        async jwt({ token, user, account, profile }) {
+            // Persist user info in JWT excluding password
+            if (user) {
+                token.name = user.name;
+                token.username = user.username;
+                token.email = user.email;
+                token.phone = user.phone;
+            }
+            return token
+        }
+    }
 });
