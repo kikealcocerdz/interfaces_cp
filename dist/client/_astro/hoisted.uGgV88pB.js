@@ -1,1 +1,0 @@
-import{S as e,N as a,P as i,A as r}from"./pagination.DtNbBNDh.js";new e("#swiper-Carousel",{modules:[a,i,r],slidesPerView:1,loop:!0,pagination:{el:"#swiper-Carousel > .swiper-pagination",clickable:!0},autoplay:{delay:5e3,disableOnInteraction:!1},navigation:{nextEl:"#swiper-Carousel > .swiper-button-next",prevEl:"#swiper-Carousel > .swiper-button-prev"}});
