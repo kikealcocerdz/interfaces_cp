@@ -1,12 +1,26 @@
 ---
-import LandingHeader from "../components/LandingHeader.astro";
-const { brand } = Astro.props;
+import LandingHeader from '../../components/LandingHeader.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {modelo: 'tesla'}},
+    {params: {modelo: 'huracan'}},
+    {params: {modelo: 'mclaren'}},
+    {params: {modelo: 'camaro'}},
+
+  ];
+}
+const { modelo } = Astro.params;
 ---
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@700&display=swap');
+
+
   .swiper {
-      width: 100%;
-      height: 100vh;
+      width: 60%;
+      height: 65vh;
+      margin-top: 50px;
   }
 
   .swiper-slide {
@@ -31,23 +45,27 @@ const { brand } = Astro.props;
   }
 </style>
 <LandingHeader />
-<section class="bg-blue-950 w-screen h-screen snap-center">
-  <div class="flex h-full w-full flex-row justify-evenly items-center">
-    <img src="/logo.png" class="w-1/4" />
-    <h2 class="text-white text-6xl">&</h2>
-    <img src="/chevrolet-logo.png" class="w-1/4" />
+<section class="snap-center font-gabarito">
+  <div class="flex h-full w-full flex-row justify-center items-center mt-16">
+    <p class="text-black text-4xl font-extrabold">San Andreas Motorsports official partner:</p>
+    <img src=`/${modelo}-logo.png` class="w-1/12 items-center" />
   </div>
 
 <div class="swiper" id="swiper-Carousel">
   <div class="swiper-wrapper">
-      <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"></div>
-      <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"></div>
-      <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"></div>
-      <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"></div>
+      <div class="swiper-slide"><img alt="tesla model-s" src=`/${modelo}-slider-1.jpeg`></div>
+      <div class="swiper-slide"><img alt="mclaren 720s" src=`/${modelo}-slider-2.jpeg`></div>
+      <div class="swiper-slide"><img alt="chevrolet camaro" src=`/${modelo}-slider-3.jpeg`></div>
+      <div class="swiper-slide"><img alt="Lamborghini Huracan" src=`/${modelo}-slider-4.jpeg`></div>
   </div>
   <div class="swiper-button-next"></div>
   <div class="swiper-button-prev"></div>
   <div class="swiper-pagination"></div>
+</div>
+<div class="flex items-center justify-center">
+  <a href=`/product/${modelo}` class="p-4 text-lg bg-light-grey rounded-lg mt-4">
+    COMPRA AHORA
+  </a>
 </div>
 </section>
 
