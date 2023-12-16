@@ -16,6 +16,14 @@ export function getStaticPaths() {
 const { modelo } = Astro.params;
 ---
 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+  *{
+    font-family: 'Gabarito', sans-serif;
+  }
+</style>
+
+
 <Layout title="San Andreas Motorsports">
   <main
     class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"

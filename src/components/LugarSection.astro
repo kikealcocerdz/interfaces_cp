@@ -1,8 +1,15 @@
 ---
 import NavigateCompra from "./NavigateCompra.astro";
+import { useState } from "react";
+import Calendar from "./Calendar.astro";
+
+let country = "España"
+
 ---
 
 <style>
+
+  
 .calendar-container {
     text-align: center;
 }
@@ -61,19 +68,21 @@ import NavigateCompra from "./NavigateCompra.astro";
 
 </style>
 <section id="section-lugar">
-  <div class="w-screen h-screen bg-white flex flex-col">
-    <NavigateCompra step={[1]} />
-      <div class="w-full flex flex-row h-full items-center justify-center">
-        <div class="flex flex-row w-1/2 h-4/6 justify-start">
+  <div class="w-screen h-screen bg-white flex flex-col font-gabarito">
+    <NavigateCompra step={1} />
+      <div class="w-full flex flex-col h-full items-center">
+        <div class="items-center text-4xl justify-center mt-28 font-gabarito font-bold">
+      </div>
+        <div class="flex flex-row justify-between">
           <div class="ml-10">
           <button id="dropdown-pais" class="bg-gray-300 w-36 text-2xl text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-            <span class="mr-1">España</span>
+            <span class="mr-1">{country}</span>
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
           </button>
           <ul id="dropdown-menu-pais" class="dropdown-menu absolute hidden text-gray-700 pt-1">
-            <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">España</a></li>
-            <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">EE.UU</a></li>
-            <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">Alemania</a></li>
+            <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" id="country1">España</button></li>
+            <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" id="country2">EE.UU</button></li>
+            <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" id="country3">Alemania</button></li>
           </ul>
         </div>
         <div class="ml-10">
@@ -82,26 +91,7 @@ import NavigateCompra from "./NavigateCompra.astro";
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
           </button>
           <ul id="dropdown-menu-dia" class="dropdown-menu absolute hidden text-gray-700 pt-1">
-            <div class="calendar-container">
-              <input type="text" id="selected-date" readonly>
-              <div class="calendar">
-                  <div class="month">
-                      <span class="prev">&#9665;</span>
-                      <span class="current-month">Enero 2023</span>
-                      <span class="next">&#9655;</span>
-                  </div>
-                  <div class="weekdays">
-                      <span>L</span>
-                      <span>M</span>
-                      <span>X</span>
-                      <span>J</span>
-                      <span>V</span>
-                      <span>S</span>
-                      <span>D</span>
-                  </div>
-                  <div class="days"></div>
-              </div>
-          </div>
+            <Calendar />
           </ul>
         </div>
         <div class="ml-10">
@@ -117,12 +107,15 @@ import NavigateCompra from "./NavigateCompra.astro";
           </ul>
         </div>
       </div>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1370.9315057446458!2d-3.967526892206348!3d39.865596421769084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6a090cdd52e087%3A0x4fc8aa2ef30036da!2sC.%20R%C3%ADo%20Valdelospozos%2C%204%2C%2045007%20Toledo!5e0!3m2!1ses!2ses!4v1702572516410!5m2!1ses!2ses" 
-          width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <div class="mt-24">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1370.9315057446458!2d-3.967526892206348!3d39.865596421769084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6a090cdd52e087%3A0x4fc8aa2ef30036da!2sC.%20R%C3%ADo%20Valdelospozos%2C%204%2C%2045007%20Toledo!5e0!3m2!1ses!2ses!4v1702572516410!5m2!1ses!2ses" 
+            width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
       </div>
   </div>
+  
 </section>
 
 <script>
@@ -135,74 +128,4 @@ import NavigateCompra from "./NavigateCompra.astro";
   document.getElementById('dropdown-hora').addEventListener('click', function() {
     document.getElementById('dropdown-menu-hora').classList.toggle('hidden');
   });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const currentDate = new Date();
-    let selectedDate = currentDate;
-
-    function generateCalendar(month, year) {
-        const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
-        const daysContainer = document.querySelector(".days");
-
-        // Clear previous days
-        daysContainer.innerHTML = "";
-
-        // Generate weekdays
-        for (let i = 0; i < firstDay.getDay(); i++) {
-            const emptyDay = document.createElement("span");
-            emptyDay.classList.add("empty");
-            daysContainer.appendChild(emptyDay);
-        }
-
-        // Generate days
-        for (let i = 1; i <= lastDay.getDate(); i++) {
-            const day = document.createElement("span");
-            day.textContent = i;
-            day.addEventListener("click", () => selectDate(new Date(year, month, i)));
-            daysContainer.appendChild(day);
-        }
-    }
-
-    function updateCalendarHeader() {
-    const currentMonthElement = document.querySelector(".current-month");
-    currentMonthElement.textContent = getMonthName(selectedDate.getMonth()) + " " + selectedDate.getFullYear();
-    }
-
-    function changeMonth(offset) {
-        selectedDate.setMonth(selectedDate.getMonth() + offset);
-        generateCalendar(selectedDate.getMonth(), selectedDate.getFullYear());
-        updateCalendarHeader();
-    }
-
-    document.querySelector(".prev").addEventListener("click", () => changeMonth(-1));
-    document.querySelector(".next").addEventListener("click", () => changeMonth(1));
-
-
-    function getMonthName(month) {
-        const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-        return monthNames[month];
-    }
-
-    function selectDate(date) {
-        selectedDate = date;
-        updateCalendarHeader();
-        document.getElementById("selected-date").value = formatDate(selectedDate);
-    }
-
-    function formatDate(date) {
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        return date.toLocaleDateString('es-ES', options);
-    }
-
-    function init() {
-        updateCalendarHeader();
-        generateCalendar(currentDate.getMonth(), currentDate.getFullYear());
-    }
-
-    init();
-});
-
 </script>
