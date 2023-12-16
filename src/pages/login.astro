@@ -33,10 +33,10 @@ console.log(session);
     button: false
 }} displayForm={!session}>
     <div class="flex items-center justify-between mb-4 gap-1">
-        <button onclick='(function(){ window.location.replace("/registrar")})();' type="button" class={session ? "hidden" : "block"}>Registrar</button>
+        <button onclick='(function(){ window.location.replace("/registrar")})();'>Registrar</button>
     </div>
     <div class="flex items-center justify-between mb-4 gap-1">
-        <button onclick='(function(){ window.location.replace("/")})();' type="button">Volver</button>
+        <button onclick='(function(){ window.location.replace("/")})();'>Volver</button>
     </div>
     <div class="flex items-center justify-between mb-6 gap-1">
         <button id="login" type="button" class={session ? "hidden" : "block"}>Iniciar sesión</button>
