@@ -1,4 +1,5 @@
 ---
+// Layout para practicamente tódas as páginas de la web
 import LandingHeader from "../components/LandingHeader.astro";
 export interface Props {
   title: string
@@ -18,6 +19,8 @@ const { title, landingHeader=true } = Astro.props
     <title class="text-center">{title}</title>
   </head>
   <body>
+    <!-- Ya que necesitaremos añadir el encabezado con el logo y la barra de navegación
+    a todas las páginas -->
     {landingHeader && <LandingHeader />}
     <slot />
   </body>

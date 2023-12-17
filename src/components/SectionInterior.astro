@@ -1,13 +1,14 @@
 ---
 import NavigateProduct from "../components/NavigateProduct.astro";
-
+// Tercera seccion de la modificación del bestseller
 const { model, price } = Astro.props;
 console.log(model)
 let modelCar = ""
 let autonomia = 634;
 let velocidad = 250;
 let aceleracion = 3.2;
-
+// Al igual que en la versión previa, necesitaremos cambiar algunos datos dependiendo de que
+//coche estemos modificando
 switch (model) {
   case 'tesla':
     modelCar = "Tesla Model S";
@@ -41,6 +42,7 @@ switch (model) {
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
   id = "section-interior"
 >
+<!-- Anque en este caso solo damos la opción de blanco o negro -->
 <div class="flex sm:flex-row flex-col items-center justify-center sm:justify-evenly w-screen h-[65%] sm:h-screen">
   <div class="sm:w-[70%] w-full sm:h-3/4 items-center justify-center">
     <h2 class="text-4xl font-bold text-center mt-5">{modelCar}</h2>

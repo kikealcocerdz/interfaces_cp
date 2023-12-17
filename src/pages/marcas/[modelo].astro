@@ -1,4 +1,5 @@
 ---
+// Página para todas las Marcas con las que colaboramos
 import LandingHeader from '../../components/LandingHeader.astro';
 import TextoTesla from '../../components/TextoTesla.astro';
 import TextoHuracan from '../../components/TextoHuracan.astro';
@@ -63,11 +64,14 @@ const TextoComponent = modelo === 'tesla' ? TextoTesla :
 }
 </style>
 <LandingHeader />
+
+<!-- Es implementado por un slider a la izquierda e información a la derecha -->
 <section class="snap-center font-gabarito">
   <div class="flex mt-20 sm:h-[20%] sm:w-screen flex-col sm:flex-row items-center justify-center sm:justify-evenly">
     <p class="text-black text-4xl font-extrabold text-center mr-0 sm:mr-80">San Andreas Motorsports official partner</p>
     <img src={`/${modelo}-logo.png`} alt="marca" class="sm:w-[12%] w-1/2 items-center justify-center sm:mr-44" />
   </div>
+  <!-- Todo dependiendo de que marca hayas elegido -->
   <div class="flex flex-col sm:flex-row">
     <div id ="galeria" class="flex sm:h-[70%] w-full sm:w-[60%] flex-col justify-between items-center">
       <div class="swiper" id="swiper-Carousel">
@@ -82,6 +86,7 @@ const TextoComponent = modelo === 'tesla' ? TextoTesla :
         <div class="swiper-pagination"></div>
       </div>
     </div>
+    <!-- Llamamos al componente de texto que toque dependiendo de la marca seleccionada -->
     <div class="flex flex-col sm:w-1/3 w-full text-center justify-center items-center">
       <TextoComponent />
     </div>
@@ -97,6 +102,7 @@ const TextoComponent = modelo === 'tesla' ? TextoTesla :
 </div>
 
 <script>
+  // Igual que en el resto de la página, se usa Swiper para los sliders
   import Swiper from 'swiper';
   import {Navigation, Pagination, Autoplay} from 'swiper/modules';
   import 'swiper/css';

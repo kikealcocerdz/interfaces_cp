@@ -10,7 +10,7 @@ let message = "";
 let success = false;
 let emailUsagePath = `${import.meta.env.USER_DATA}usedemails.json`;
 let emailUsage = JSON.parse(await fsp.readFile(emailUsagePath));
-
+/* Base de datos y checkeo de los inputs */
 if (Astro.request.method === "POST") {
     try {
         success = false;

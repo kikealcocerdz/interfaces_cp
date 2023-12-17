@@ -7,6 +7,7 @@ let session = await getSession(Astro.request);
 
 console.log(session);
 ---
+    <!-- Creacion del formulario del login -->
 
 <FormLayout title="Login" form={{
     entries: [
@@ -31,19 +32,22 @@ console.log(session);
     ],
     submitText: "Login",
     button: false
+    
 }} displayForm={!session}>
+    <!-- Actividad de los botones -->
+
     <div class="flex items-center justify-between mb-4 gap-1">
+        <button id="login" type="button" class={session ? "hidden" : "block"}>Iniciar sesión</button>
         <button onclick='(function(){ window.location.replace("/registrar")})();' type="button" class={session ? "hidden" : "block"}>Registrar</button>
     </div>
     <div class="flex items-center justify-between mb-4 gap-1">
         <button onclick='(function(){ window.location.replace("/")})();' type="button">Volver</button>
     </div>
     <div class="flex items-center justify-between mb-6 gap-1">
-        <button id="login" type="button" class={session ? "hidden" : "block"}>Iniciar sesión</button>
         <button id="logout" type="button" class={!session ? "hidden" : "block"}>Desconectar</button>
     </div>
-    {!session && <p id="result" class="text-error-red hidden" >Había un problema</p>}
-    {session && <p class="text-success-green">Iniciado sesión como {session.user.name}</p>}
+    {!session && <p id="result" class="text-error-red hidden" >Se ha encontrado un problema</p>}
+    {session && <p class="text-success-green text-center">Sesión iniciada como {session.user.name}</p>}
 </FormLayout>
 
 <script>

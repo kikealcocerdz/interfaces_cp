@@ -1,4 +1,5 @@
 ---
+// Layout para los formularios implementados (log_in, register y contacto)
 export interface FormEntry {
     name: String,
     label: String,
@@ -43,6 +44,8 @@ const {
 ---
 
 <style>
+      @import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+
     h1 {
         font-size: 60px;
     }
@@ -56,14 +59,14 @@ const {
 
 
 <Layout title={title} landingHeader={false}>
-    <div class="flex flex-row flex-wrap w-full bg-gradient-to-t from-grey to-white relative h-screen">
-        <h1 class="h-10 flex-1">{title}</h1>
+    <div class="flex flex-row flex-wrap w-full bg-slate-800 text-white font-gabarito h-screen justify-center items-center">
+        <h1 class="h-10 flex-1 text-center">{title}</h1>
         <div class="flex-grow flex flex-col w-full relative place-items-center h-3/4">
             <div class="w-full max-w-xs">
-                <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
+                <form class="bg-white h-full shadow-md rounded px-8 pt-6 pb-8 mb-4" method="POST">
                     {displayForm && form.entries.map((element) => (
                             <div class="mb-4">
-                                <label class="block text-gray-700 text-sm font-bold mb-2" for={element.name}>
+                                <label class="block text-gray-700 text-lg font-bold mb-2" for={element.name}>
                                     {element.label}
                                 </label>
                                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -83,7 +86,7 @@ const {
                                 <button type="button">
                                     Sign In
                                 </button>
-                                <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                                <a class="inline-block align-baseline font-bold text-lg text-blue-500 hover:text-blue-800"
                                    href="#">
                                     Forgot Password?
                                 </a>

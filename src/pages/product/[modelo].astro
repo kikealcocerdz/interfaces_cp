@@ -1,4 +1,5 @@
 ---
+// Página del producto global para los coches
 import Layout from "../../layouts/Layout.astro";
 import SectionColor from "../../components/SectionColor.astro";
 import SectionInterior from "../../components/SectionInterior.astro"
@@ -41,7 +42,7 @@ switch (modelo) {
   }
 </style>
 
-
+<!-- Dado que es el esqueleto global, solo implementa los componentes ya descritos y le indica la versión -->
 <Layout title="San Andreas Motorsports">
   <main
     class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
@@ -57,47 +58,3 @@ switch (modelo) {
     </div>
   </main>
 </Layout>
-<script>
-  document.addEventListener('click', function() {
-    actualizarPrecio();
-});
-
-function actualizarPrecio() {
-    let precio = document.getElementById("precio");
-    let precio_total = 0;
-    let precio_color;
-    let precio_ruedas;
-    let precio_interior;
-    
-    // Asegúrate de obtener las imágenes y el modelo de alguna manera
-    let imageColor = document.getElementById("image-color");
-    let imageRuedas = document.getElementById("image-ruedas");
-    let imageInterior = document.getElementById("image-interior");
-    
-    console.log(imageColor.src);
-    if (imageColor.src == `/${modelo}_blanco_1.png`){
-        precio_color = 1300;
-    } else if (imageColor.src == `/${modelo}_negro_1.png`){
-        precio_color = 1000;
-    } else if (imageColor.src == `/${modelo}_azul_1.png`){
-        precio_color = 1700;
-    } else if (imageColor.src == `/${modelo}_rojo_1.png`){
-        precio_color = 2000;
-    }
-
-    if (imageRuedas.src == `/${modelo}_${window.selectedColor.color}_1.png`){
-        precio_ruedas = 2000;
-    } else if (imageRuedas.src == `/${modelo}_${window.selectedColor.color}_2.png`){
-        precio_ruedas = 2500;
-    }
-
-    if (imageInterior.src == `/${modelo}_interior_negro.png`){
-        precio_interior = 1000; 
-    } else if (imageInterior.src == `/${modelo}_interior_blanco.png`){
-        precio_interior = 1500; 
-    }
-
-    precio_total = precio_color + precio_ruedas + precio_interior;
-    precio.textContent = precio_total;
-}
-</script>
