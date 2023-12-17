@@ -130,18 +130,18 @@
           const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
           return monthNames[month];
       }
-  
+      // Mostrar la fecha elegida la fecha
       function selectDate(date) {
           selectedDate = date;
           updateCalendarHeader();
           document.getElementById("selected-date").value = formatDate(selectedDate);
       }
-  
+      
       function formatDate(date) {
           const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
           return date.toLocaleDateString('es-ES', options);
       }
-  
+      // Función init para llamar a todo
       function init() {
           updateCalendarHeader();
           generateCalendar(currentDate.getMonth(), currentDate.getFullYear());

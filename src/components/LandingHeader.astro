@@ -1,7 +1,8 @@
 ---
 ---
-
+<!-- Componente que guarda la barra de navegación para moverse por todas las páginas -->
 <style>
+  /* Como se puede apreciar, posee un dropdown, o desplegable por comodidad */
   .dropdown-content{
     display: none;
     position: absolute;
@@ -15,7 +16,7 @@
     left: 0;
     transition: all 0.5s ease;
   }
-
+  /* También le añadimos un hover para mayor efecto visual */
   .dropdown:hover .dropdown-content{
     display: flex;
     transition: all 0.5s ease;
@@ -30,51 +31,58 @@
   id="landing-header"
   class="py-2 sm:px-10 flex justify-between items-center bg-slate-900 h-16 fixed top-0 w-full z-40 text-white font-gabarito"
 >
+<!-- Los elementos principales son, nuestro logo siempre en la parte superior izquierda -->
   <div class="sm:w-[5%] w-16 mr-3">
-    <a  href="/"><img alt="logo-san-andreas"  src="/logo.png" ></a>
+    <a href="/"><img alt="logo-san-andreas"  src="/logo.png" ></a>
   </div>
   <nav class="justify-center items-center">
+    <!-- Y, dependiendo de la seccion, mostramos unas páginas u otras -->
     <ul
       class="flex items-center justify-around [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block sm:[&>li>a]:px-4 [&>li>a]:py-2">
       <li class="dropdown sm:px-10 transition-all sm:text-2xl">
+        <!-- Para las marcas mostramos el logo, y redirigimos a la página de la colaboración. -->
         <button class="text-[12px] sm:text-2xl py-7 sm:p-10 hover:font-extrabold">Marcas</button>
         <div class="dropdown-content items-center transition-all">
-          <a class="hover:bg-slate-100 py-3 sm:w-52" href="/marcas/tesla"><img    class="sm:w-56 w-28"  src="/tesla-logo.png"></a>
-          <a class="hover:bg-slate-100 py-4 sm:w-44" href="/marcas/huracan"><img  class="sm:w-56 w-28"  src="/huracan-logo.png"></a>
-          <a class="hover:bg-slate-100 py-3 sm:w-52" href="/marcas/mclaren"><img  class="sm:w-56 w-28"  src="/mclaren-logo.png"></a>
-          <a class="hover:bg-slate-100 py-3 sm:w-52" href="/marcas/camaro"><img   class="sm:w-56 w-28"  src="/camaro-logo.png"></a>
+          <a class="hover:bg-slate-100 py-3 sm:w-52" href="/marcas/tesla"><img    alt="imagen-marca" class="sm:w-56 w-28"  src="/tesla-logo.png"></a>
+          <a class="hover:bg-slate-100 py-4 sm:w-44" href="/marcas/huracan"><img  alt="imagen-marca" class="sm:w-56 w-28"  src="/huracan-logo.png"></a>
+          <a class="hover:bg-slate-100 py-3 sm:w-52" href="/marcas/mclaren"><img  alt="imagen-marca" class="sm:w-56 w-28"  src="/mclaren-logo.png"></a>
+          <a class="hover:bg-slate-100 py-3 sm:w-52" href="/marcas/camaro"><img   alt="imagen-marca" class="sm:w-56 w-28"  src="/camaro-logo.png"></a>
         </div>
       </li>
       <li class="dropdown sm:px-10 transition-all sm:text-2xl">
+        <!-- Para los bestsellers, mostramos los coches y ofrecemos reserva en la página -->
         <button class="text-[12px] sm:text-2xl py-7 p-2 sm:p-10 hover:font-extrabold">Bestsellers</button>
         <div class="dropdown-content items-center transition-all">
-          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/tesla"><img   src="/tesla-azul-1.png"><p class="text-black text-center">Model S</p></a>
-          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/huracan"><img src="/huracan_negro_12.png"><p class="text-black text-center">Huracan</p></a>
-          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/mclaren"><img src="/mclaren_blanco.png"><p class="text-black text-center">720s</p></a>
-          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/camaro"><img  src="/camaro-rojo.png"><p class="text-black text-center">Camaro</p></a>
+          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/tesla"><img   alt="imagen-slider" src="/tesla-azul-1.png"><p class="text-black text-center">Model S</p></a>
+          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/huracan"><img alt="imagen-slider" src="/huracan_negro_12.png"><p class="text-black text-center">Huracan</p></a>
+          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/mclaren"><img alt="imagen-slider" src="/mclaren_blanco.png"><p class="text-black text-center">720s</p></a>
+          <a class="sm:w-56 w-18 mt-3 hover:bg-slate-100" href="/product/camaro"><img  alt="imagen-slider" src="/camaro-rojo.png"><p class="text-black text-center">Camaro</p></a>
         </div>
         
       </li>
       <li class="dropdown sm:px-10 transition-all sm:text-2xl">
+        <!-- Los concesionarios estan en tres países diferentes principalmente, pero se prevee expansión -->
         <button class="text-[12px] sm:text-2xl py-7 p-2 sm:p-10 hover:font-extrabold">Concesionarios</button>
         <div class="dropdown-content transition-all items-center w-full justify-evenly">
           <div class="w-52 p-3 hover:bg-slate-100">
-              <a href="/compra/tesla"><img src="/spain.png">
+              <a href="/compra/tesla"><img alt="spain" src="/spain.png">
               </a>
           </div>
           <div class="w-52 p-3 hover:bg-slate-100">
             <a href="/compra/tesla">
-              <img src="/eeuu.svg"></img>
+              <img alt="eeeuu"  src="/eeuu.svg"></img>
             </a>
         </div>
         <div class="w-56 p-3 hover:bg-slate-100">
           <a href="/compra/tesla">
-            <img src="/world.svg"></img>
+            <img alt="mundo" src="/world.svg"></img>
           </a>
       </div>
         </div>
       </li> 
       <li class="dropdown sm:px-10 transition-all sm:text-2xl">
+        <!-- Posibilidad de contactar con nosotros en caso de tener algun problema 
+        o seguirnos en redes sociales -->
         <button class="text-[12px] py-7 sm:text-2xl p-2 sm:p-10 ">Contacto</button>
         <div class="dropdown-content items-center transition-all">
           <a href="/contacto" class="hover:bg-slate-100 w-20"><svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M123.25 24.192c0-.018 0-.034-.005-.052s-.007-.063-.009-.094a1.734 1.734 0 0 0-.083-.408c-.006-.018 0-.037-.011-.055s-.01-.015-.013-.023a1.734 1.734 0 0 0-.227-.407c-.021-.028-.043-.053-.066-.08a1.755 1.755 0 0 0-.31-.294c-.012-.009-.022-.02-.034-.028a1.744 1.744 0 0 0-.414-.2c-.034-.012-.068-.022-.1-.032a1.733 1.733 0 0 0-.474-.073H6.5a1.733 1.733 0 0 0-.474.073c-.035.01-.068.02-.1.032a1.744 1.744 0 0 0-.414.2c-.012.008-.022.019-.034.028a1.755 1.755 0 0 0-.31.294c-.022.027-.045.052-.066.08a1.734 1.734 0 0 0-.227.407c0 .008-.01.015-.013.023s-.005.037-.011.055a1.734 1.734 0 0 0-.083.408c0 .032-.009.063-.009.094s-.005.034-.005.052v79.615c0 .023.006.045.007.068a1.737 1.737 0 0 0 .019.188c.008.051.015.1.027.152a1.74 1.74 0 0 0 .056.179c.017.047.033.094.054.139a1.729 1.729 0 0 0 .093.172c.024.04.048.081.075.119a1.743 1.743 0 0 0 .125.152c.033.036.066.072.1.106.021.019.037.042.059.061s.036.017.052.03a1.736 1.736 0 0 0 .452.263c.035.014.071.022.107.033a1.732 1.732 0 0 0 .488.085c.012 0 .023.006.035.006H121.501c.012 0 .023-.006.034-.006a1.732 1.732 0 0 0 .489-.085c.035-.011.07-.019.1-.033a1.736 1.736 0 0 0 .453-.263c.016-.013.036-.017.052-.03s.038-.042.059-.061c.036-.034.069-.069.1-.106a1.743 1.743 0 0 0 .125-.152c.027-.038.051-.078.075-.119a1.729 1.729 0 0 0 .093-.172c.021-.045.037-.092.054-.139a1.74 1.74 0 0 0 .056-.179c.012-.05.019-.1.027-.152a1.737 1.737 0 0 0 .019-.188c0-.023.007-.045.007-.068zM45.8 60.316l17.058 14.677a1.751 1.751 0 0 0 2.283 0L82.2 60.316l35.512 41.741H10.289zM8.25 99.052V28.007l34.9 30.026zm76.6-41.019 34.9-30.026v71.045zm31.931-32.091L81.276 56.493c-.006.005-.014.008-.02.014l-.019.02L64 71.358 46.763 56.527l-.019-.02-.02-.014-35.507-30.551z"/></svg></a>
@@ -93,8 +101,10 @@
       class="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2"
     >
       <li>
+        <!-- Y la posibilidad de iniciar sesion si vas a comprar en la página. -->
         <a href="/login"
           ><img
+            alt="imagen-login"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAADHklEQVR4nO2av2sUQRTHx8sliCSmkRhF/wDBCEm0E1KIMUTUTow/UCwilklELWKnIJjEiFV6NVpYaW8pMUEELVS0ijGKaJGo+Psjj3sLc+teXO92LzvnfGC5Y3bv+97czHvzZu6M8Xg8Ho/H4/F4PB5P+gArgE7gEDCgl7zvkHumVgFagXFgjtLIvcvAWlNjI34a+Eh8FoFTzs8IYCUwGdHBeW0fBcb0vbSFuSEaxuGRnwx1aAboBnIRz+eAXcDDiC/BvZlAYdrbyEjXxfhcXnOFzZBxCaAFWLA6MFqGxpVQTmg1rkDxCM7EGfkSM8EOhzHjUOzPWY53V6DVY+m8ciIXAFstp19HJbx/0JLE+MbS6zBZBzhoOTyZgN4tS++AyToUCpiASwnojTi1GgBDlsMjCehJsRQwaLIO0Pe/h0Cn5fB8AknwraXXbhxcBnsq0Oq1dGadWAYF3dIGSDGTN+UVQo8qqSazVAqPl6FxNVQKu3VGQPFyiNb2+Zgjb3deGDCuQSEXyFaWUDj0LLEd7g1Ne+GaM7Ff4kAk/CWg5e1N3SKP6VJnZ/uA684eiIRmwpDGcVwW9LDUzZGPQpKYjrbs6koxq5Vfi6lVKMyIdq0Yg2PxPm2rnRH3eDx/ADQA24D9QD9wRq9+bZN7DaaWANqAC8A08DXGEijPPADOA5uNiwD1wHHgCZXzGDhWzoZqWQAOAy9LdOYX8BS4DUwAF/Wa0LZn+kwUL+S80WQVYD1wN8LxRa3n9wDNMXSagb1aBkdVj3eAdSZLADuBDyFH32mCa6xAtxE4q1o274EdJgsAR4FvlnM/devbmKCNJtUUbTtZHknKRlkAJ0MxK7V8V4r2utSGnVNOpGVvSYDdwHfLGcn4G03KSPyHfjP8AexL224RwJbQPz6m4yS4pABWA1OWffGlrVrG8/qLb4BsbzdUxXixH2uA55YfcpJUXw3Dw5bRLzIbUjda2pdNwGfLn+G0DeaAT5bBc6kajOfTYCgUcmkbnFJj96sy5f7uTx1wL8hF1TC4CtguryZbu0xZIpuW2xePx+PxeDwe4wq/AUif4nSBBPXxAAAAAElFTkSuQmCC"
           /></a
         >

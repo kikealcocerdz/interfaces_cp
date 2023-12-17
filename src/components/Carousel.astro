@@ -1,7 +1,7 @@
 ---
 // const swiperId = "Carousel-" + (new Date().valueOf()).toString();
 ---
-
+<!-- Primer Carrousel de la pagina principal -->
 <style>
     .swiper {
         width: 100%;
@@ -43,7 +43,7 @@
         margin-right: auto;
     }
 </style>
-
+<!-- El cual muestra los best sellers de cada marca con la que colaboramos -->
 <div class="hidden sm:block">
     <div class="swiper" id="swiper-Carousel">
         <div class="swiper-wrapper">
@@ -61,6 +61,7 @@
 
 
 <script>
+    // Al igual que con el resto de galerías, usamos Swiper
     import Swiper from 'swiper';
     import {Navigation, Pagination, Autoplay} from 'swiper/modules';
     import 'swiper/css';
