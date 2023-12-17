@@ -1,12 +1,48 @@
 ---
 import NavigateCompra from "./NavigateCompra.astro";
+
+const {name, email, phone, model} =  Astro.props
 ---
+
 <section id="section-confirmar">
   <div class="w-screen h-screen bg-white flex flex-col">
-    <NavigateCompra step={123} />
-      <div class="w-full flex flex-row h-full items-center justify-center">
-        <div class="flex flex-row w-1/2 h-4/6 justify-start">
-      </div>
-      </div>
+    <!-- Para dos columnas -->
+    <div class = "">
+      <!--Primera columna -->
+      <div class="">
+        <!-- primera parte primera columna -->
+        <div class="">
+          <h1>Datos personales</h1>
+          
+          <p>Username: {name}</p>
+          <p>E-mail: {email}</p>
+          <p>Phone: {phone}</p>
+          <!--Aqui habría que acceder a la base de datos y recoger los resultados -->
+          <p>Credit card: ----PONER LO QUE SE INTRODUZCA EN DATOS-----</p>
+        </div>
+        <!-- Segunda parte primera columna -->
+        <div>
+          <h1>Coche: </h1>
+        </div>
+      
+      </div>  
+      <!-- Segunda columna(a la derecha) -->
+      <div class="">
+        <!-- Datos de lugar y hora -->
+        <div class="">
+          Lugar:
+          Fecha:
+        </div>
+        
+        <div class="ml-10">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1370.9315057446458!2d-3.967526892206348!3d39.865596421769084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6a090cdd52e087%3A0x4fc8aa2ef30036da!2sC.%20R%C3%ADo%20Valdelospozos%2C%204%2C%2045007%20Toledo!5e0!3m2!1ses!2ses!4v1702572516410!5m2!1ses!2ses" 
+            width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+          
+      
+      </div>  
+    </div>
   </div>
 </section>

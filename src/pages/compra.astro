@@ -1,30 +1,170 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import LandingHeader from "../components/LandingHeader.astro";
-import LugarSection from "../components/LugarSection.astro";
-import DatosSection from "../components/DatosSection.astro";
-import ConfirmSection from "../components/ConfirmSection.astro";
----
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
-  *{
-    font-family: 'Gabarito', sans-serif;
-  }
-</style>
+import Calendar from "../components/Calendar.astro";
 
+import {getSession} from "auth-astro/server"
+
+const session = await getSession(Astro.request)
+
+// Checks if user is logged in, and if not send them to the login page
+if (!session) {
+  return Astro.redirect("/login")
+}
+
+export function getStaticPaths() {
+  return [
+    {params: {modelo: 'tesla'}},
+    {params: {modelo: 'huracan'}},
+    {params: {modelo: 'mclaren'}},
+    {params: {modelo: 'camaro'}},
+
+  ];
+}
+const { modelo } = Astro.params;
+let country = "España"
+---
+<link rel="stylesheet" href="../../public/pedidos.css">
 <Layout title="San Andreas Motorsports">
-  <main
-    class="snap-x snap-mandatory relative w-full h-screen overflow-x-auto overflow-y-hidden scroll-smooth flex"
-  >
-    <LandingHeader />
-      <div class="snap-start flex-shrink-0 w-screen h-screen">
-        <LugarSection />
+  <main>
+  
+  <nav class="h-full flex flex-row w-full mt-10 py-8">
+    <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"   class=`step active border-2 border-black rounded-full w-16 h-16`></a>Lugar</div>
+    <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"  class=`step border-2 border-black rounded-full w-16 h-16  `></a>Datos</div>
+    <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"class=`step border-2 border-black rounded-full w-16 h-16`></a>Confirmación</div>
+  </nav>
+  
+  <section id="section-lugar">
+    <div "font-gabarito">
+        <div class="flex w-full flex-row justify-start">
+          <div class="">
+            <button id="dropdown-pais" class="bg-gray-300 w-36 text-2xl text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+              <span class="mr-1">{country}</span>
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+            </button>
+            <ul id="dropdown-menu-pais" class="dropdown-menu absolute hidden text-gray-700 pt-1">
+              <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" id="country1">España</button></li>
+              <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" id="country2">EE.UU</button></li>
+              <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" id="country3">Alemania</button></li>
+            </ul>
+          </div>
+          <div class="ml-10">
+            <button id="dropdown-hora" class="bg-gray-300 w-36 text-2xl text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+              <span class="mr-1">Hora</span>
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+            </button>
+            <ul id="dropdown-menu-hora" class="dropdown-menu absolute hidden text-gray-700 pt-1">
+              <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">16:00</a></li>
+              <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">17:00</a></li>
+              <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">18:00</a></li>
+              <li><a class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center" href="#">19:00</a></li>
+            </ul>
+          </div>
+          <div class="ml-10">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1370.9315057446458!2d-3.967526892206348!3d39.865596421769084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6a090cdd52e087%3A0x4fc8aa2ef30036da!2sC.%20R%C3%ADo%20Valdelospozos%2C%204%2C%2045007%20Toledo!5e0!3m2!1ses!2ses!4v1702572516410!5m2!1ses!2ses" 
+              width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="ml-10">
+            <ul id="dropdown-menu-dia" class="absolute text-gray-700 pt-1">
+              <Calendar />
+            </ul>
+          </div>
+        </div>
+    </div>
+    
+  </section>
+
+  <section id="section-datos">
+    <form method="post" id="pago-form">
+      <label for="nombre">Nombre del titular de la tarjeta:</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder={session.user.name}
+        patter="A-Za-z\s'-]+"
+        required
+      /><br />
+
+      <label for="tarjeta">Número de tarjeta de crédito:</label>
+      <input
+        type="text"
+        id="tarjeta"
+        name="tarjeta"
+        
+        placeholder="5105-1051-0510-5100"
+        required
+      /><br />
+
+      <label for="vencimiento">Fecha de vencimiento:</label>
+      <input
+        type="text"
+        id="vencimiento"
+        name="vencimiento"
+        
+        placeholder="dd-mm-yyyy"
+        required
+      /><br />
+
+      <label for="cvv">CVV:</label>
+      <input
+        type="text"
+        id="cvv"
+        name="cvv"
+        pattern="[0-9]{3,4}"
+        required
+      /><br />
+      <button type="submit" class="siguiente-pagina" id="startButton">
+        Pagar
+      </button>
+    </form>
+  </section>
+  
+  <section id="section-confirmar">
+    <div class="w-screen h-screen bg-white flex flex-col">
+      <!-- Para dos columnas -->
+      <div class = "">
+        <!--Primera columna -->
+        <div class="">
+          <!-- primera parte primera columna -->
+          <div class="">
+            <h1>Datos personales</h1>
+            
+            <p>Username: {session.user.name}</p>
+            <p>E-mail: {session.user.email}</p>
+            <p>Phone: {session.user.phone}</p>
+            <!--Aqui habría que acceder a la base de datos y recoger los resultados -->
+            <p>Credit card: ----PONER LO QUE SE INTRODUZCA EN DATOS-----</p>
+          </div>
+          <!-- Segunda parte primera columna -->
+          <div>
+            <h1>Coche: </h1>
+          </div>
+        
+        </div>  
+        <!-- Segunda columna(a la derecha) -->
+        <div class="">
+          <!-- Datos de lugar y hora -->
+          <div class="">
+            Lugar:
+            Fecha:
+          </div>
+          
+          <div class="ml-10">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1370.9315057446458!2d-3.967526892206348!3d39.865596421769084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6a090cdd52e087%3A0x4fc8aa2ef30036da!2sC.%20R%C3%ADo%20Valdelospozos%2C%204%2C%2045007%20Toledo!5e0!3m2!1ses!2ses!4v1702572516410!5m2!1ses!2ses" 
+              width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>  
       </div>
-      <div class="snap-start flex-shrink-0 w-screen h-screen">
-        <DatosSection />
-      </div>
-      <div class="snap-start flex-shrink-0 w-screen h-screen">
-        <ConfirmSection />
-      </div>
-  </main>
+    </div>
+  </section>
+  <footer id="footer">
+    <button class="siguiente-pagina" id="confirma_compra">Confirmar Reserva</button>
+  </footer>
+</main>
 </Layout>
+<script src="../../public/pedidos.js"></script>
