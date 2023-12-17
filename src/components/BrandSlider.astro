@@ -10,11 +10,12 @@ export interface Props {
 // const swiperId = (new Date().valueOf()).toString();
 const { imageCar, brand } = Astro.props as Props;
 ---
-
+<!-- Componnete para crear el slider de cada Marca, 
+  para ello necesitaremos el coche y la marca corresponfdientes -->
 <style>
   .swiper {
     margin: 10px auto;
-    width: 50%;
+    width: 70%;
     height: 35vh;
     margin-top: 90px;
   }
@@ -53,7 +54,7 @@ const { imageCar, brand } = Astro.props as Props;
 
   </div>
 </div>
-
+<!-- En este caso usaremos Swiper, al igual que en el resto de galerias. -->
 <script>
   import Swiper from 'swiper';
   import 'swiper/css';

@@ -44,20 +44,19 @@
     }
 </style>
 
-
-<div class="swiper" id="swiper-Carousel">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"><a href="/product/tesla"></a></div>
-        <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"><a href="/product/mclaren"></a></div>
-        <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"><a href="/product/camaro"></a></div>
-        <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"><a href="/product/huracan"></a></div>
+<div class="hidden sm:block">
+    <div class="swiper" id="swiper-Carousel">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"><a href="/product/tesla"></a></div>
+            <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"><a href="/product/mclaren"></a></div>
+            <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"><a href="/product/camaro"></a></div>
+            <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"><a href="/product/huracan"></a></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+        <div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-    <div>
-    <button class="z-50">COMPRAR</button>
-
 </div>
 
 
@@ -77,7 +76,7 @@
             clickable: true,
         },
         autoplay: {
-            delay: 5000,
+            delay: 500,
             disableOnInteraction: false,
         },
         navigation: {

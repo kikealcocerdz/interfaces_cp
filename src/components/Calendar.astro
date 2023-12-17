@@ -1,4 +1,5 @@
 
+<!-- Calendario para hacer la reserva -->
 <style>
   .calendar-container {
       text-align: center;
@@ -80,28 +81,28 @@
       <div class="days"></div>
   </div>
 </div>
-
+<!-- Este requerirá un amplio script para su implementación -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
       const currentDate = new Date();
       let selectedDate = currentDate;
-  
+    // Hacer visible el calendario interactivo
       function generateCalendar(month, year) {
           const firstDay = new Date(year, month, 1);
           const lastDay = new Date(year, month + 1, 0);
           const daysContainer = document.querySelector(".days");
   
-          // Clear previous days
+          // Borrar los dias
           daysContainer.innerHTML = "";
   
-          // Generate weekdays
+          // Crear los findes de semana
           for (let i = 0; i < firstDay.getDay(); i++) {
               const emptyDay = document.createElement("span");
               emptyDay.classList.add("empty");
               daysContainer.appendChild(emptyDay);
           }
   
-          // Generate days
+          // Crear los dias
           for (let i = 1; i <= lastDay.getDate(); i++) {
               const day = document.createElement("span");
               day.textContent = i;
@@ -109,22 +110,22 @@
               daysContainer.appendChild(day);
           }
       }
-  
+      // Cambiar el encabezado
       function updateCalendarHeader() {
       const currentMonthElement = document.querySelector(".current-month");
       currentMonthElement.textContent = getMonthName(selectedDate.getMonth()) + " " + selectedDate.getFullYear();
       }
-  
+    // Cambiar el mes
       function changeMonth(offset) {
           selectedDate.setMonth(selectedDate.getMonth() + offset);
           generateCalendar(selectedDate.getMonth(), selectedDate.getFullYear());
           updateCalendarHeader();
       }
-  
+      // Para avanzar mas o menos, dependiendo del boton
       document.querySelector(".prev").addEventListener("click", () => changeMonth(-1));
       document.querySelector(".next").addEventListener("click", () => changeMonth(1));
   
-  
+      // Posibles meses
       function getMonthName(month) {
           const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
           return monthNames[month];

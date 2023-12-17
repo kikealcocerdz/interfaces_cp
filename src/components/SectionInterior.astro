@@ -1,7 +1,7 @@
 ---
 import NavigateProduct from "../components/NavigateProduct.astro";
 
-const { model } = Astro.props;
+const { model, price } = Astro.props;
 console.log(model)
 let modelCar = ""
 let autonomia = 634;
@@ -41,17 +41,19 @@ switch (model) {
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
   id = "section-interior"
 >
-<div class="flex flex-row items-center justify-evenly w-screen h-screen">
-  <div class="w-[70%] h-3/4 items-center justify-center">
-    <h2 class="text-4xl font-bold text-center">{modelCar}</h2>
-    <ul class="text-xl flex flex-row items-center justify-evenly mt-5"><li>El precio al seleccionar un interior diferente al predeterminado es de +5400$</li></ul>
-    <div class="w-full h-full justify-center items-center flex">
-        <img id="image-interior" src={`/${model}_interior_negro.png`} class="w-3/5" alt="Interior" />
+<div class="flex sm:flex-row flex-col items-center justify-center sm:justify-evenly w-screen h-[65%] sm:h-screen">
+  <div class="sm:w-[70%] w-full sm:h-3/4 items-center justify-center">
+    <h2 class="text-4xl font-bold text-center mt-5">{modelCar}</h2>
+    <ul class="flex sm:text-xl flex-row items-center justify-evenly mt-16 sm:mt-5"><li>El precio al seleccionar un interior diferente al predeterminado es de +5400$</li></ul>
+    <div class="w-full h-full sm:h-full justify-center items-center flex">
+        <img id="image-interior" src={`/${model}_interior_negro.png`} class="sm:w-3/5" alt="Interior" />
       </div>
     </div>
-  <NavigateProduct step={[1, 2, 3]}/>
+    <div class="hidden sm:flex">
+      <NavigateProduct step={[1, 2, 3]}/>
+    </div>
 </div>
-<footer class="mb-10">
+<footer class="sm:mb-10 mt-24">
   <div class="flex flex-row justify-center items-center">
     <div class="flex flex-row justify-center items-center">
       <button onclick={`changeInterior('negro', '${model}')`}class="bg-black border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
@@ -59,6 +61,11 @@ switch (model) {
     </div>
   </div>
 </footer>
+<div class="block sm:hidden">
+  <NavigateProduct step={[1, 2, 3]}/>
+</div>
+<div class="text-black text-4xl absolute right-48 top-[80%] z-40" id="precio">{price}$ </div>
+
 </section>
 
 <script>  

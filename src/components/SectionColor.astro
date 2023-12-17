@@ -2,7 +2,7 @@
 import 'animate.css';
 import NavigateProduct from './NavigateProduct.astro';
 
-const { model } = Astro.props;
+const { model, price } = Astro.props;
 console.log(model)
 let modelCar = ""
 let autonomia = 634;
@@ -43,17 +43,19 @@ switch (model) {
   id="section-color"
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center snap-center"
 >
-<div class="flex flex-row items-center justify-evenly w-screen h-screen">
-  <div class="w-[70%] h-3/4 items-center justify-center">
+<div class="flex sm:flex-row flex-col items-center justify-center sm:justify-evenly w-screen h-[60%] sm:h-screen">
+  <div class="sm:w-[70%] w-full sm:h-3/4 items-center justify-center">
     <h2 class="text-4xl font-bold text-center">{modelCar}</h2>
-    <ul class="flex text-xl flex-row items-center justify-evenly mt-5"><li>Autonomía: <strong>{autonomia}km</strong></li><li>Velocidad Máxima: <strong>{velocidad}km/h</strong></li><li>0-100km/h en <strong>{aceleracion} segundos</strong></li></ul>
-    <div class="w-full h-full justify-center items-center flex">
-      <img src=`/${model}_blanco_1.png` id="image-color" class="w-3/5 image-color" alt="Tesla S" />
+    <ul class="flex sm:text-xl flex-row items-center justify-evenly mt-16 sm:mt-5"><li>Autonomía: <strong>{autonomia}km</strong></li><li>Velocidad Máxima: <strong>{velocidad}km/h</strong></li><li>0-100km/h en <strong>{aceleracion} segundos</strong></li></ul>
+    <div class="w-full h-full sm:h-full justify-center items-center flex">
+      <img src=`/${model}_blanco_1.png` id="image-color" class="sm:w-3/5 image-color" alt="Tesla S" />
     </div>
   </div>
+  <div class="hidden sm:flex">
   <NavigateProduct step={[1]}>
+  </div>
 </div>
-<footer class="mb-10">
+<footer class="sm:mb-10 mt-24">
   <div class="flex flex-row justify-center items-center">
     <div class="flex flex-row justify-center items-center">
       <button onclick={`window.changeColor('blanco', '${model}')`} class="bg-white border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
@@ -62,30 +64,41 @@ switch (model) {
       <button onclick={`window.changeColor('azul', '${model}')`}  class="animate__fadeIn bg-blue-800 border-2 border-black mx-3 rounded-full w-16 h-16 flex justify-center items-center">
       </div>
   </div>
-</footer>
+    <div class="text-black text-4xl absolute right-48 top-[80%] z-40" id="precio">{price}$ </div>
+  </footer>
+
+<div class="block sm:hidden">
+  <NavigateProduct step={[1]}>
+  </div>
 </section>
 <section
   id="section-ruedas"
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center snap-center"
 >
-<div class="flex flex-row items-center justify-evenly w-screen h-screen">
-  <div class="w-[70%] h-3/4 items-center justify-center">
+<div class="flex sm:flex-row flex-col items-center justify-center sm:justify-evenly w-screen h-[60%] sm:h-screen">
+  <div class="sm:w-[70%] w-full sm:h-3/4 items-center justify-center">
     <h2 class="text-4xl font-bold text-center">{modelCar}</h2>
-    <ul class="flex flex-row items-center justify-evenly  mt-5 text-xl"><li>El precio al seleccionar una llanta diferente es de +1499$</ul>
-    <div class="w-full h-full justify-center items-center flex">
-      <img id="image-ruedas" src=`/${model}_blanco_1.png` class="w-3/5 image-ruedas" alt="Tesla S" />
+    <ul class="flex sm:text-xl flex-row items-center justify-evenly sm:mt-5"><li>El precio al seleccionar una llanta diferente es de +1499$</ul>
+    <div class="w-full h-full sm:h-full justify-center items-center flex">
+      <img id="image-ruedas" src=`/${model}_blanco_1.png` class="sm:w-3/5 image-ruedas" alt="Tesla S" />
     </div>
     </div>
-  <NavigateProduct step={[1, 2]}>
+    <div class="hidden sm:flex">
+      <NavigateProduct step={[1, 2]}>
+      </div>
 </div>
 <footer class="mb-10">
   <div class="flex flex-row justify-center items-center">
     <div class="flex flex-row justify-center items-center">
-      <button onclick={`window.changeRueda(2, '${model}')`} class="mx-3 w-16 h-16 flex justify-center items-center"><img src="/tesla-llantas-1.avif"></button>
-      <button onclick={`window.changeRueda(1, '${model}')`}  class="mx-3 w-16 h-16 flex justify-center items-center"><img src="/tesla-llantas-2.avif"></button>
+      <button onclick={`window.changeRueda(2, '${model}', '${price}')`} class="mx-3 w-16 h-16 flex justify-center items-center"><img src="/tesla-llantas-1.avif"></button>
+      <button onclick={`window.changeRueda(1, '${model}', '${price}')`}  class="mx-3 w-16 h-16 flex justify-center items-center"><img src="/tesla-llantas-2.avif"></button>
     </div>
   </div>
+  <div class="text-black text-4xl absolute right-48 top-[80%] z-40" id="precio">{price}$ </div>
 </footer>
+<div class="block sm:hidden">
+  <NavigateProduct step={[1, 2]}>
+  </div>
 </section>
 
 <script>
@@ -106,7 +119,6 @@ switch (model) {
   window.changeRueda = function(rueda, modelo) {
     console.log(rueda)
     const imageRueda = document.getElementById("image-ruedas");
-    const imageColor = document.getElementById("image-color");
     imageColor.src = `/${modelo}_${window.selectedColor.color}_${rueda}.png`;
     imageRueda.src = `/${modelo}_${window.selectedColor.color}_${rueda}.png`;
   }

@@ -48,12 +48,12 @@ switch (modelo) {
     <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"  class=`step border-2 border-black rounded-full w-16 h-16  `></a>Datos</div>
     <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"class=`step border-2 border-black rounded-full w-16 h-16`></a>Confirmación</div>
   </nav>
-  <h2 class="text-4xl font-bold text-center mb-7">Concerte su cita</h2>  
+  <h2 class="text-4xl font-bold text-center mb-24 sm:mb-7">Concerte su cita</h2>  
   <section id="section-lugar">
     <div class="flex flex-col font-gabarito">
-        <div class="flex w-full flex-row justify-start">
-          <div class="">
-            <button id="dropdown-pais" class="bg-slate-900 w-36 text-2xl text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+        <div class="flex w-full sm:flex-row flex-col justify-center sm:justify-start">
+          <div class="sm:ml-10 sm:h-0 sm:mt-0 mt-16 ml-16 h-40 justify-center flex items-center">
+            <button id="dropdown-pais" class="bg-slate-900 sm:w-36 text-2xl text-white font-semibold py-2 px-4 rounded inline-flex items-center">
               <span class="mr-1 " id="pais">País</span>
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
             </button>
@@ -63,7 +63,7 @@ switch (modelo) {
               <li><button class="bg-gray-200 hover:bg-gray-400 text-2xl text-gray-700  w-36 font-semibold py-2 px-4 rounded inline-flex items-center posible_countries" id="country3">Alemania</button></li>
             </ul>
           </div>
-          <div class="ml-10">
+          <div class="sm:ml-10 ml-16 sm:h-0 h-36 justify-center items-center flex">
             <button id="dropdown-hora" class="bg-slate-900 w-36 text-2xl text-white font-semibold py-2 px-4 rounded inline-flex items-center">
               <span id="hora" class="mr-1">Hora</span>
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
@@ -81,7 +81,7 @@ switch (modelo) {
               width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
-          <div class="ml-10">
+          <div class="ml-56 sm:ml-10">
             <ul id="dropdown-menu-dia" class="absolute text-gray-700 pt-1">
               <Calendar />
             </ul>
@@ -132,7 +132,7 @@ switch (modelo) {
         class="mt-2"
         required
       /><br />
-      <button type="submit" class="text-2xl bg-slate-200 rounded-xl p-4 mt-7 hover:text-white  hover:bg-slate-900 transition-all" id="startButton">
+      <button type="submit" class="text-2xl bg-slate-800 rounded-xl p-4 mt-7 hover:text-white text-white hover:bg-slate-900 transition-all" id="startButton">
         Pagar
       </button>
     </form>
@@ -141,7 +141,7 @@ switch (modelo) {
   <section id="section-confirmar">
     <div>
       <!-- Para dos columnas -->
-      <div class = "flex flex-row">
+      <div class = "flex flex-col sm:flex-row items-center justify-center">
         <!--Primera columna -->
         <div class="w-1/2 h-full items-center justify-center">
           <!-- primera parte primera columna -->
@@ -163,7 +163,7 @@ switch (modelo) {
         <!-- Segunda columna(a la derecha) -->
         <div class="flex flex-col items-center justify-center">
           <!-- Datos de lugar y hora -->
-          <div class="flex flex-row text-xl mr-7 ml-7">
+          <div class="flex flex-row text-xl mr-7 ml-7 sm:mt-0 mt-60">
             <p class="m-4" id="lugar">Lugar: </p>
             <p class="m-4" id="fech" >  Fecha: </p>
             <p class="m-4" id="hor" >  Hora: </p>
@@ -177,10 +177,10 @@ switch (modelo) {
         </div>  
       </div>
     </div>
-    <div id="reserva_hecha"><h2 class="mb-4">Cita concertada con éxito</h2><div class="flex flex-row items-center justify-center"><img class="bg-white h-auto rounded-xl w-1/4 mr-2" src=`/${modelo}-logo.png`> & <img class="ml-2 rounded-xl w-1/4"  src="/logo.png"></div></div>
+    <div id="reserva_hecha"><h2 class="mb-4">Cita concertada con éxito</h2><div class="flex flex-row items-center justify-center sm:w-auto w-[90%]"><img class="bg-white h-auto rounded-xl w-1/2 sm:w-1/4 mr-2" src=`/${modelo}-logo.png`> & <img class="ml-2 rounded-xl w-1/2 sm:w-1/4"  src="/logo.png"></div></div>
   </section>
   <footer class="flex h-full items-center justify-center p-5">
-    <button class="text-2xl bg-slate-200 rounded-xl p-4 mt-2 hover:text-white  hover:bg-slate-900 transition-all" id="confirma_compra">Confirmar Reserva</button>
+    <button class="text-2xl bg-slate-900 text-white rounded-xl  p-4 mt-24 sm:mt-2 hover:text-white  hover:bg-slate-900 transition-all" id="confirma_compra">Confirmar Reserva</button>
   </footer>
 </main>
 </Layout>

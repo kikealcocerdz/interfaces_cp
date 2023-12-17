@@ -1,17 +1,18 @@
 ---
 import BrandSlider from "./BrandSlider.astro";
 ---
-
-<div class="grid h-4/6  grid-cols-2 py-4">
+<!-- Componente para recoger los sliders de cada marca  -->
+<div class="sm:grid flex flex-col h-4/6 sm:grid-cols-2 py-4">
   <BrandSlider imageCar={["/tesla-logo.png",   "/tesla-slider-1.jpeg", "/tesla-slider-2.jpeg", "/tesla-slider-3.jpeg",  "/tesla-slider-4.jpeg"  ]} brand={"Tesla"} />
   <BrandSlider imageCar={["/huracan-logo.png", "/huracan-slider-1.jpeg", "/huracan-slider-2.jpeg", "/huracan-slider-3.jpeg",  "/huracan-slider-4.jpeg"   ]} brand={"huracan"}/>
   <BrandSlider imageCar={["/mclaren-logo.png", "/mclaren-slider-1.jpeg", "/mclaren-slider-2.jpeg", "/mclaren-slider-3.jpeg",  "/mclaren-slider-4.jpeg"   ]} brand={"mclaren"}/>
   <BrandSlider imageCar={["/camaro-logo.png",  "/camaro-slider-1.jpeg", "/camaro-slider-2.jpeg", "/camaro-slider-3.jpeg ",  "/camaro-slider-4.jpeg" ]} brand={"camaro"}/>
 </div>
-<footer class="mb-13 py-5 text-white bg-black font-bold">
+<!-- Y adición del footer para la politica de privacidad y el contacto -->
+<footer class="sm:mb-13 py-5 text-white bg-black font-bold">
     <ul class="flex flex-row items-center justify-evenly">
-      <li><a href="/politica">Privacidad y legal</a></li>
-      <li><a href="/contacto">Contacto</a></li>
-      <li><a href="/compra/tesla">Nuestros concesionarios</a></li>
+      <li><a class="text-[15px] sm:text-xl" href="/politica">Privacidad y legal</a></li>
+      <li><a class="text-[15px] sm:text-xl" href="/contacto">Contacto</a></li>
+      <li><a class="text-[15px] sm:text-xl" href="/compra/tesla">Nuestros concesionarios</a></li>
     </ul>
 </footer>

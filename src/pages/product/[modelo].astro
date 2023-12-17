@@ -14,6 +14,24 @@ export function getStaticPaths() {
   ];
 }
 const { modelo } = Astro.params;
+let precio = 0;
+
+switch (modelo) {
+  case 'tesla':
+    precio = 65.443;
+    break;
+  case 'camaro':
+    precio = 35.099;
+    break;
+  case 'huracan':
+    precio = 214.599;
+    break;
+  case 'mclaren':
+    precio = 283.009;
+    break;
+  default:
+    precio = 35.099;
+    }
 ---
 
 <style>
@@ -29,13 +47,57 @@ const { modelo } = Astro.params;
     class="snap-y snap-mandatory relative w-full h-screen overflow-y-auto overflow-x-hidden scroll-smooth"
   >
     <div>
-      <SectionColor model={modelo} />
+      <SectionColor model={modelo} price={precio}/>
     </div>
     <div class="snap-center">
-      <SectionInterior model={modelo}/>
+      <SectionInterior model={modelo} price={precio}/>
     </div>
     <div class="snap-center">
-      <SectionConfirm model={modelo} />
+      <SectionConfirm model={modelo} price={precio}/>
     </div>
   </main>
 </Layout>
+<script>
+  document.addEventListener('click', function() {
+    actualizarPrecio();
+});
+
+function actualizarPrecio() {
+    let precio = document.getElementById("precio");
+    let precio_total = 0;
+    let precio_color;
+    let precio_ruedas;
+    let precio_interior;
+    
+    // Asegúrate de obtener las imágenes y el modelo de alguna manera
+    let imageColor = document.getElementById("image-color");
+    let imageRuedas = document.getElementById("image-ruedas");
+    let imageInterior = document.getElementById("image-interior");
+    
+    console.log(imageColor.src);
+    if (imageColor.src == `/${modelo}_blanco_1.png`){
+        precio_color = 1300;
+    } else if (imageColor.src == `/${modelo}_negro_1.png`){
+        precio_color = 1000;
+    } else if (imageColor.src == `/${modelo}_azul_1.png`){
+        precio_color = 1700;
+    } else if (imageColor.src == `/${modelo}_rojo_1.png`){
+        precio_color = 2000;
+    }
+
+    if (imageRuedas.src == `/${modelo}_${window.selectedColor.color}_1.png`){
+        precio_ruedas = 2000;
+    } else if (imageRuedas.src == `/${modelo}_${window.selectedColor.color}_2.png`){
+        precio_ruedas = 2500;
+    }
+
+    if (imageInterior.src == `/${modelo}_interior_negro.png`){
+        precio_interior = 1000; 
+    } else if (imageInterior.src == `/${modelo}_interior_blanco.png`){
+        precio_interior = 1500; 
+    }
+
+    precio_total = precio_color + precio_ruedas + precio_interior;
+    precio.textContent = precio_total;
+}
+</script>

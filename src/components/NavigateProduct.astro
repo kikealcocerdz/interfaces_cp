@@ -3,10 +3,10 @@ const { step } = Astro.props
 ---
 
 <div>
-  <nav class="flex flex-col w-full">
-    <div class=`flex flex-row items-center justify-center mt-5 w-max`><a href="#section-color"   class={`border-2 border-black rounded-full w-16 h-16 mr-5 ${step[0] === 1 ? 'bg-black' : 'bg-white'}`}></a>Color</div>
-    <div class=`flex flex-row items-center justify-center mt-5 w-max`><a href="#section-ruedas"  class={`border-2 border-black rounded-full w-16 h-16 mr-5 ${step[1] === 2 ? 'bg-black' : 'bg-white'}`}></a>Ruedas</div>
-    <div class=`flex flex-row items-center justify-center mt-5 w-max`><a href="#section-interior"class={`border-2 border-black rounded-full w-16 h-16 mr-5   ${step[2] === 3 ? 'bg-black' : 'bg-white'}`}></a>Interior</div>
-    <div class=`flex flex-row items-center justify-center mt-5 w-max`><a href="#section-confirm" class={`border-2 border-black rounded-full w-16 h-16 mr-5 ${step[3] === 4 ? 'bg-black' : 'bg-white'}`}></a>Encargo</div>
+  <nav class="flex flex-row sm:flex-col w-full">
+    <div class=`flex flex-col m-4 sm:flex-row items-center justify-center mt-5 w-full`><a href="#section-color"   class={`sm:mr-4 border-2 border-black rounded-full w-8 h-8 sm:w-16 sm:h-16 ${step[0] === 1 ? 'bg-black' : 'bg-white'}`}></a>Color</div>
+    <div class=`flex flex-col m-4 sm:flex-row items-center justify-center mt-5 w-full`><a href="#section-ruedas"  class={`sm:mr-4 border-2 border-black rounded-full w-8 h-8 sm:w-16 sm:h-16 ${step[1] === 2 ? 'bg-black' : 'bg-white'}`}></a>Ruedas</div>
+    <div class=`flex flex-col m-4 sm:flex-row items-center justify-center mt-5 w-full`><a href="#section-interior"class={`sm:mr-4 border-2   border-black rounded-full w-8 h-8 sm:w-16 sm:h-16    ${step[2] === 3 ? 'bg-black' : 'bg-white'}`}></a>Interior</div>
+    <div class=`flex flex-col m-4 sm:flex-row items-center justify-center mt-5 w-full`><a href="#section-confirm" class={`sm:mr-4 border-2 border-black rounded-full w-8 h-8 sm:w-16  sm:h-16 ${step[3] === 4 ? 'bg-black' : 'bg-white'}`}></a>Encargo</div>
   </nav>
 </div>
