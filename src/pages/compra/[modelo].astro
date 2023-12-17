@@ -48,13 +48,13 @@ switch (modelo) {
     <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"  class=`step border-2 border-black rounded-full w-16 h-16  `></a>Datos</div>
     <div class=`flex flex-col items-center justify-evenly w-1/3 mt-5 px-10`><a href="#"class=`step border-2 border-black rounded-full w-16 h-16`></a>Confirmación</div>
   </nav>
-  
+  <h2 class="text-4xl font-bold text-center mb-7">Concerte su cita</h2>  
   <section id="section-lugar">
     <div class="flex flex-col font-gabarito">
         <div class="flex w-full flex-row justify-start">
           <div class="">
-            <button id="dropdown-pais" class="bg-gray-300 w-36 text-2xl text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
-              <span class="mr-1" id="pais">Elija País</span>
+            <button id="dropdown-pais" class="bg-slate-900 w-36 text-2xl text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+              <span class="mr-1 " id="pais">País</span>
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
             </button>
             <ul id="dropdown-menu-pais" class="dropdown-menu absolute hidden text-gray-700 pt-1">
@@ -64,7 +64,7 @@ switch (modelo) {
             </ul>
           </div>
           <div class="ml-10">
-            <button id="dropdown-hora" class="bg-gray-300 w-36 text-2xl text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+            <button id="dropdown-hora" class="bg-slate-900 w-36 text-2xl text-white font-semibold py-2 px-4 rounded inline-flex items-center">
               <span id="hora" class="mr-1">Hora</span>
               <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
             </button>
@@ -88,16 +88,15 @@ switch (modelo) {
           </div>
         </div>
     </div>
-    <button class="text-2xl bg-slate-200 rounded-xl p-4 mt-[450px] hover:text-white  hover:bg-blue-500 transition-all" id="confirma_compra">Confirmar Reserva</button>
-
   </section>
 
   <section id="section-datos">
-    <form class="flex flex-col text-2xl font-bold" method="post" id="pago-form">
+    <form class="flex flex-col text-2xl font-bold mt-8" method="post" id="pago-form">
       <label for="nombre">Nombre del titular de la tarjeta:</label>
       <input
         type="text"
         id="nombre"
+        class="mt-2"
         name="nombre"
         placeholder={session.user.name}
         pattern="A-Za-z\s'-]+"
@@ -109,7 +108,7 @@ switch (modelo) {
         type="text"
         id="tarjeta"
         name="tarjeta"
-        
+        class="mt-2"
         placeholder="5105-1051-0510-5100"
         required
       /><br />
@@ -119,7 +118,7 @@ switch (modelo) {
         type="text"
         id="vencimiento"
         name="vencimiento"
-        
+        class="mt-2"
         placeholder="dd-mm-yyyy"
         required
       /><br />
@@ -130,9 +129,10 @@ switch (modelo) {
         id="cvv"
         name="cvv"
         pattern="[0-9]{3,4}"
+        class="mt-2"
         required
       /><br />
-      <button type="submit" class="text-2xl bg-slate-200 rounded-xl p-4 mt-32 hover:text-white  hover:bg-blue-500 transition-all" id="startButton">
+      <button type="submit" class="text-2xl bg-slate-200 rounded-xl p-4 mt-7 hover:text-white  hover:bg-slate-900 transition-all" id="startButton">
         Pagar
       </button>
     </form>
@@ -146,38 +146,42 @@ switch (modelo) {
         <div class="w-1/2 h-full items-center justify-center">
           <!-- primera parte primera columna -->
           <div class="">
-            <h1>Datos personales</h1>
-            
-            <p>Username: {session.user.name}</p>
-            <p>E-mail: {session.user.email}</p>
-            <p>Phone: {session.user.phone}</p>
+            <h2 class="text-4xl">Datos personales</h2>
+            { console.log(session.user)}
+            <p class="text-2xl">Username: {session.user.name}</p>
+            <p class="text-2xl">E-mail: {session.user.email}</p>
+            <p class="text-2xl">Phone: {session.user.phone}</p>
             <!--Aqui habría que acceder a la base de datos y recoger los resultados -->
-            <p id ="credit_card">Credit card:</p>
+            <p class="text-2xl" id ="credit_card">Credit card:</p>
           </div>
           <!-- Segunda parte primera columna -->
           <div>
-            <h1>Coche: {modelCar}</h1>
+            <h2 class="text-3xl font-bold mt-4">Modelo seleccionado:</h2>
+            <img src=`/${modelo}_blanco_1.png`>
           </div>
-        
         </div>  
         <!-- Segunda columna(a la derecha) -->
         <div class="flex flex-col items-center justify-center">
           <!-- Datos de lugar y hora -->
-          <div class="flex flex-row text-2xl">
-            <p id="lugar">Lugar: </p>
-            <p id="fech" >Fecha: </p>
-            <p id="hor" >Hora: </p>
+          <div class="flex flex-row text-xl mr-7 ml-7">
+            <p class="m-4" id="lugar">Lugar: </p>
+            <p class="m-4" id="fech" >  Fecha: </p>
+            <p class="m-4" id="hor" >  Hora: </p>
           </div>
           <div class="ml-10">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1370.9315057446458!2d-3.967526892206348!3d39.865596421769084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6a090cdd52e087%3A0x4fc8aa2ef30036da!2sC.%20R%C3%ADo%20Valdelospozos%2C%204%2C%2045007%20Toledo!5e0!3m2!1ses!2ses!4v1702572516410!5m2!1ses!2ses" 
-              width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+              width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
         </div>  
       </div>
     </div>
+    <div id="reserva_hecha"><h2 class="mb-4">Cita concertada con éxito</h2><div class="flex flex-row items-center justify-center"><img class="bg-white h-auto rounded-xl w-1/4 mr-2" src=`/${modelo}-logo.png`> & <img class="ml-2 rounded-xl w-1/4"  src="/logo.png"></div></div>
   </section>
+  <footer class="flex h-full items-center justify-center p-5">
+    <button class="text-2xl bg-slate-200 rounded-xl p-4 mt-2 hover:text-white  hover:bg-slate-900 transition-all" id="confirma_compra">Confirmar Reserva</button>
+  </footer>
 </main>
 </Layout>
 <script src="/pedidos.js" is:inline></script>

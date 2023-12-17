@@ -49,6 +49,7 @@ const { imageCar, brand } = Astro.props as Props;
     <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[2]}`></div>
     <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[3]}`></div>
     <div class="swiper-slide"><img alt=`${brand} 2` src=`${imageCar[4]}`></div>
+    <div class="swiper-pagination"></div>
 
   </div>
 </div>
@@ -56,10 +57,20 @@ const { imageCar, brand } = Astro.props as Props;
 <script>
   import Swiper from 'swiper';
   import 'swiper/css';
+  import {Navigation, Pagination, Autoplay} from 'swiper/modules';
+
 
   new Swiper('#swiper-BrandSlider', {
-      effect: "cards",
-      grabCursor: true,
-      loop: true,
+    modules: [Navigation, Pagination, Autoplay],
+        slidesPerView: 1,
+        loop: true,
+        pagination: {
+            el: `#swiper-BrandSlider > .swiper-pagination`,
+            clickable: true,
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
     });
 </script>

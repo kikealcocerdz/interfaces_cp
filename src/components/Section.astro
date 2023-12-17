@@ -1,5 +1,5 @@
 ---
-const { color, title, subtitle, id } = Astro.props;
+const { color, title, subtitle, id, subsubtitle } = Astro.props;
 const textColor = `text-${color}`;
 ---
 
@@ -13,8 +13,11 @@ const textColor = `text-${color}`;
       <h2 class={`${textColor} pt-20 text-[40px] font-bold`}>
         {title}
       </h2>
-      <p class={`${textColor} text-sm`}>
+      <p class={`${textColor} text-xl`}>
         {subtitle}
+      </p>
+      <p class={`${textColor} text-xl`}>
+        {subsubtitle}
       </p>
     </header>
   </div>

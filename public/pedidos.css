@@ -70,7 +70,7 @@
 }
 
 #section-lugar {
-  width: 100vw;
+  width: 80%;
   height: 50vh;
   flex-direction: row;
   align-items: center;
@@ -79,7 +79,7 @@
 }
 
 #section-datos {
-  width: 100vw;
+  width: 100%;
   height: 50vh;
   flex-direction: row;
   align-items: center;
@@ -88,10 +88,26 @@
 }
 
 #section-confirmar {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 50vh;
   display: none;
   flex-direction: column;
   align-items: center;
   display: none;
+}
+
+#reserva_hecha {
+  display: none;
+  background-color: rgb(15, 23, 42);
+  width: 50vw;
+  height: 40vh;
+  text-align: center;
+  position: absolute;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: 800;
+  color: white;
+  flex-direction: column;
 }

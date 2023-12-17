@@ -15,6 +15,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-image: url(/model-s.webp);
     }
 
     .swiper-slide img {
@@ -22,6 +23,19 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: absolute; /* Cambia esta línea */
+        top: 0; /* Agrega esta línea */
+        left: 0; /* Agrega esta línea */
+        z-index: 1; /* Cambia esta línea */
+    }
+
+    .swiper-slide a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative; /* Cambia esta línea */
+        z-index: 2; /* Cambia esta línea */
     }
 
     .swiper {
@@ -33,15 +47,19 @@
 
 <div class="swiper" id="swiper-Carousel">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"></div>
-        <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"></div>
-        <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"></div>
-        <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"></div>
+        <div class="swiper-slide"><img alt="tesla model-s" src="/model-s.webp"><a href="/product/tesla"></a></div>
+        <div class="swiper-slide"><img alt="mclaren 720s" src="/mclaren-blanco.jpg"><a href="/product/mclaren"></a></div>
+        <div class="swiper-slide"><img alt="chevrolet camaro" src="/chevrolet-camaro.jpg"><a href="/product/camaro"></a></div>
+        <div class="swiper-slide"><img alt="Lamborghini Huracan" src="/lamborghini-huracan.jpg"><a href="/product/huracan"></a></div>
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
     <div class="swiper-pagination"></div>
+    <div>
+    <button class="z-50">COMPRAR</button>
+
 </div>
+
 
 <script>
     import Swiper from 'swiper';

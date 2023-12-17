@@ -1,5 +1,9 @@
 ---
 import LandingHeader from '../../components/LandingHeader.astro';
+import TextoTesla from '../../components/TextoTesla.astro';
+import TextoHuracan from '../../components/TextoHuracan.astro';
+import TextoMclaren from '../../components/TextoMclaren.astro';
+import TextoCamaro from '../../components/TextoCamaro.astro';
 
 export function getStaticPaths() {
   return [
@@ -7,67 +11,93 @@ export function getStaticPaths() {
     {params: {modelo: 'huracan'}},
     {params: {modelo: 'mclaren'}},
     {params: {modelo: 'camaro'}},
-
   ];
 }
+
 const { modelo } = Astro.params;
+let text = "";
+
+const TextoComponent = modelo === 'tesla' ? TextoTesla :
+                      modelo === 'huracan' ? TextoHuracan :
+                      modelo === 'mclaren' ? TextoMclaren :
+                      TextoCamaro;
+
 ---
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@700&display=swap');
 
-
+@media screen and (max-width: 640px) {
   .swiper {
-      width: 60%;
-      height: 65vh;
-      margin-top: 50px;
+    height: 40vh !important;
   }
+  
+}
 
-  .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
+.swiper {
+    width: 80%;
+    height: 65vh;
+    margin-top: 20px;
+}
 
-  .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
 
-  .swiper {
-      margin-left: auto;
-      margin-right: auto;
-  }
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper {
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>
 <LandingHeader />
 <section class="snap-center font-gabarito">
-  <div class="flex h-full w-full flex-row justify-center items-center mt-16">
-    <p class="text-black text-4xl font-extrabold">San Andreas Motorsports official partner:</p>
-    <img src=`/${modelo}-logo.png` class="w-1/12 items-center" />
+  <div class="flex mt-20 h-[20%] w-screen flex-row sm:flex-col  items-center justify-evenly">
+    <p class="text-black text-4xl font-extrabold text-center sm:mr-0 mr-80">San Andreas Motorsports official partner</p>
+    <img src={`/${modelo}-logo.png`} class="w-[12%] sm:w-1/5 items-center sm:mr-0 mr-44" />
   </div>
-
-<div class="swiper" id="swiper-Carousel">
-  <div class="swiper-wrapper">
-      <div class="swiper-slide"><img alt="tesla model-s" src=`/${modelo}-slider-1.jpeg`></div>
-      <div class="swiper-slide"><img alt="mclaren 720s" src=`/${modelo}-slider-2.jpeg`></div>
-      <div class="swiper-slide"><img alt="chevrolet camaro" src=`/${modelo}-slider-3.jpeg`></div>
-      <div class="swiper-slide"><img alt="Lamborghini Huracan" src=`/${modelo}-slider-4.jpeg`></div>
+  <div class="flex flex-row sm:flex-col">
+    <div class="flex flex-col w-1/3 justify-center sm:w-full sm:text-center items-center">
+      <TextoComponent />
+    </div>
+    <div class="flex h-[70%] sm:h-1/2 w-[60%] sm:w-screen flex-col justify-between items-center">
+      <div class="swiper" id="swiper-Carousel">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img alt="tesla model-s" src={`/${modelo}-slider-1.jpeg`}></div>
+          <div class="swiper-slide"><img alt="mclaren 720s" src={`/${modelo}-slider-2.jpeg`}></div>
+          <div class="swiper-slide"><img alt="chevrolet camaro" src={`/${modelo}-slider-3.jpeg`}></div>
+          <div class="swiper-slide"><img alt="Lamborghini Huracan" src={`/${modelo}-slider-4.jpeg`}></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+    <div class="flex flex-col w-1/3 justify-center sm:hidden items-center">
+      <TextoComponent />
+    </div>
   </div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-pagination"></div>
-</div>
+</section>
 <div class="flex items-center justify-center">
-  <a href=`/product/${modelo}` class="p-4 text-lg bg-light-grey rounded-lg mt-4">
+  <a href={`/product/${modelo}`} class="hover:bg-slate-900 hover:text-white font-gabarito font-bold transition-all p-4 text-lg bg-light-grey rounded-lg mt-4">
     COMPRA AHORA
   </a>
+  <a href={`/compra/${modelo}`} class="hover:bg-slate-900 hover:text-white font-gabarito font-bold transition-all p-4 mx-4 text-lg bg-light-grey rounded-lg mt-4">
+    PRUEBA DE CONDUCCION
+  </a>
 </div>
-</section>
 
 <script>
   import Swiper from 'swiper';
