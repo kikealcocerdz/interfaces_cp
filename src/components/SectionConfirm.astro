@@ -10,14 +10,16 @@ se acepta y pasas a la compra de ese vehículo -->
   id="section-confirm"
 >
 <div class="flex flex-col sm:flex-row items-center justify-evenly w-screen h-screen">
-  <div class="w-[70%] h-full mt-16 flex flex-col items-center justify-center">
-    <h2 class="sm:text-6xl text-5xl text-black font-extrabold text-center">Configuración Finalizada</h2>
-    <p class="text-2xl text-black mt-20 text-center">Para realizar el encargo, pinche en el siguiente enlace para concertar una cita con el concesionario y realizar el pago allí.</p>
-    <p class="text-2xl text-black mt-5 text-center">Al finalizar este proceso, recibirá su coche.</p>
+  <div class="w-[70%] h-full mt-10 flex flex-col items-center justify-center">
+    <h2 class="sm:text-6xl mt-4 text-5xl text-black font-extrabold text-center">Configuración Finalizada</h2>
+    <p class="text-2xl text-black mt-10 text-center">Para realizar el encargo, pinche en el siguiente enlace para concertar una cita con el concesionario y realizar el pago allí.</p>
+    <p class="text-2xl text-black mt-2 text-center">Al finalizar este proceso, recibirá su coche.</p>
     <h3 class="text-2xl font-bold">Precio excluyendo mejoras: {price} $</h3>
     <p>Las mejoras se pagaran el día de la recogida</p>
-    <a href=`/compra/${model}` class="bg-black text-white hover:bg-slate-900 rounded-xl transition-all  sm:rounded-full p-2 sm:w-1/3 mt-20 text-2xl font-bold">Concertar cita</a>
+    <a href=`/compra/${model}` class="bg-black text-white hover:bg-slate-900 rounded-xl transition-all  sm:rounded-full p-2 sm:w-1/3 mt-5 text-2xl font-bold">Concertar cita</a>
   </div>
+  <div class="mb-16">
   <NavigateProduct step={[1, 2, 3, 4]}>
+  </div>
 </div>
 </section>
