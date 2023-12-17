@@ -2,6 +2,40 @@
 import NavigateProduct from "../components/NavigateProduct.astro";
 
 const { model } = Astro.props;
+console.log(model)
+let modelCar = ""
+let autonomia = 634;
+let velocidad = 250;
+let aceleracion = 3.2;
+
+switch (model) {
+  case 'tesla':
+    modelCar = "Tesla Model S";
+    autonomia = 634;
+    velocidad = 250;
+    aceleracion = 3.2
+    break;
+  case 'camaro':
+    modelCar = "Chevrolet Camaro";
+    autonomia = 854;
+    velocidad = 216;
+    aceleracion = 4.4
+    break;
+  case 'huracan':
+    modelCar = "Lamborghini Huracan";
+    autonomia = 754;
+    velocidad = 264;
+    aceleracion = 2.2
+    break;
+  case 'mclaren':
+    modelCar = "McLaren 720s";
+    autonomia = 776;
+    velocidad = 302;
+    aceleracion = 1.7
+    break;
+  default:
+    modelCar = "Unknown model";
+}
 ---
 <section
   class="bg-white h-screen w-screen text-center relative flex flex-col items-center"
@@ -9,8 +43,8 @@ const { model } = Astro.props;
 >
 <div class="flex flex-row items-center justify-evenly w-screen h-screen">
   <div class="w-[70%] h-3/4 items-center justify-center">
-    <h2 class="text-4xl font-bold text-center">Tesla Model S</h2>
-    <ul class="flex flex-row items-center justify-evenly mt-2"><li>Autonomía: <strong>634km</strong></li><li>Velocidad Máxima: <strong>250km/h</strong></li><li>0-100km/h en <strong>3.2 segundos</strong></li></ul>
+    <h2 class="text-4xl font-bold text-center">{modelCar}</h2>
+    <ul class="flex flex-row items-center justify-evenly mt-2"><li>El precio al seleccionar un interior diferente al predeterminado es de +5400$</li></ul>
     <div class="w-full h-full justify-center items-center flex">
         <img id="image-interior" src={`/${model}_interior_negro.png`} class="w-3/5" alt="Interior" />
       </div>
